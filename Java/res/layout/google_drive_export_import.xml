@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Layout.Vertical.Table" >
+
+    <TextView
+        style="@style/View.Text.Title"
+        android:text="@string/export_google_drive_title" >
+    </TextView>
+
+    <TableRow>
+
+        <TextView
+            style="@style/View.Text.Label"
+            android:text="@string/export_google_drive_file_name" >
+        </TextView>
+
+        <EditText
+            android:id="@+id/editTextGoogleDriveExportFileName"
+            style="@style/Edit.Text" >
+        </EditText>
+    </TableRow>
+
+    <TableRow android:gravity="center" >
+
+        <Button
+            android:id="@+id/buttonConfirmExportToGoogleDrive"
+            style="@style/View.Button"
+            android:text="@string/export_google_button_export" >
+        </Button>
+    </TableRow>
+
+    <!-- Trennstrich -->
+
+    <View
+        android:layout_height="@dimen/invisible_stripline_line_height"
+        android:layout_marginTop="@dimen/stripline_margin_bottom"
+        android:background="@color/text_color" >
+    </View>
+
+    <TextView
+        style="@style/View.Text.Title"
+        android:text="@string/import_google_drive_title" >
+    </TextView>
+
+    <TableRow android:gravity="center" >
+
+        <Button
+            android:id="@+id/buttonConfirmImportFromGoogleDrive"
+            style="@style/View.Button"
+            android:text="@string/import_google_button" >
+        </Button>
+    </TableRow>
+
+</TableLayout>

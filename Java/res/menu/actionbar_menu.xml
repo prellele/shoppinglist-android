@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/actionbarMenu" >
+
+    <item
+        android:id="@+id/actionbarAddProduct"
+        android:showAsAction="ifRoom"
+        android:title="@string/actionbar_add_new_product">
+    </item>
+    <item
+        android:id="@+id/actionbarManageStores"
+        android:orderInCategory="5"
+        android:showAsAction="never"
+        android:title="@string/actionbar_manage_stores">
+    </item>
+    <item
+        android:id="@+id/actionbarManageUnits"
+        android:orderInCategory="10"
+        android:showAsAction="never"
+        android:title="@string/actionbar_manage_units">
+    </item>
+    <item
+        android:id="@+id/actionbarManageFavorites"
+        android:orderInCategory="15"
+        android:showAsAction="never"
+        android:title="@string/actionbar_manage_favorites">
+    </item>
+    <item
+        android:id="@+id/actionbarDeleteShoppinglist"
+        android:orderInCategory="20"
+        android:showAsAction="never"
+        android:title="@string/actionbar_delete_shoppinglist">
+    </item>
+    <item
+        android:id="@+id/actionbarShowHistory"
+        android:orderInCategory="25"
+        android:showAsAction="never"
+        android:title="@string/actionbar_show_history">
+    </item>
+    <item
+        android:id="@+id/actionbarOptions"
+        android:orderInCategory="30"
+        android:showAsAction="never"
+        android:title="@string/actionbar_options">
+    </item>
+</menu>

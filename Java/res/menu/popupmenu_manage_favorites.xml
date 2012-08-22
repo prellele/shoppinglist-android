@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/popupAddFavoritelistToShoppinglist"
+        android:showAsAction="ifRoom"
+        android:title="@string/popup_button_add_favoritelist_to_shoppinglist">
+    </item>
+    <item
+        android:id="@+id/popupEditFavoriteName"
+        android:showAsAction="ifRoom"
+        android:title="@string/popup_button_change_favorite_name">
+    </item>
+    <item
+        android:id="@+id/popupDeleteFavorite"
+        android:showAsAction="ifRoom"
+        android:title="@string/popup_button_delete">
+    </item>
+
+</menu>

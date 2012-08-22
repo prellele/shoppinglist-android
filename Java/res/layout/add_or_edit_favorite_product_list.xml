@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Layout.Vertical.Table"
+    android:scrollbarAlwaysDrawVerticalTrack="true" >
+
+    <TextView
+        android:id="@+id/titleAddProductToFavorite"
+        style="@style/View.Text.Title" >
+    </TextView>
+
+    <ListView
+        android:id="@+id/listProductsInFavorite"
+        style="@style/View.List.Clickable.Long" >
+    </ListView>
+
+</LinearLayout>

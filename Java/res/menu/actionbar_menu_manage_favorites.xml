@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/actionbarMenu" >
+
+    <item
+        android:id="@+id/actionbarAddFavorite"
+        android:showAsAction="ifRoom"
+        android:title="@string/actionbar_add_favorite_list">
+    </item>
+
+</menu>

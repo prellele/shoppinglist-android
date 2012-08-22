@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Layout.Vertical.Table" >
+
+    <TextView
+        style="@style/View.Text.Title"
+        android:text="@string/title_user_configuration" >
+    </TextView>
+
+    <TableRow>
+
+        <TextView
+            style="@style/View.Text.Label"
+            android:text="@string/label_view_type" >
+        </TextView>
+
+        <RadioGroup
+            android:id="@+id/radioGroupViewType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/radioButtonViewStore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@android:drawable/btn_radio"
+                android:checked="true"
+                android:text="@string/radio_button_view_type_store"
+                android:textColor="@color/text_color" >
+            </RadioButton>
+
+            <RadioButton
+                android:id="@+id/radioButtonViewAlphabetically"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@android:drawable/btn_radio"
+                android:text="@string/radio_button_view_type_alphabetically"
+                android:textColor="@color/text_color" >
+            </RadioButton>
+        </RadioGroup>
+    </TableRow>
+
+    <TableRow android:gravity="center" >
+
+        <Button
+            android:id="@+id/buttonSaveUserConfiguration"
+            style="@style/View.Button"
+            android:text="@string/button_text_save" >
+        </Button>
+    </TableRow>
+
+    <!-- Trennstrich -->
+
+    <View
+        android:layout_height="@dimen/invisible_stripline_line_height"
+        android:layout_marginTop="@dimen/stripline_margin_bottom"
+        android:background="@color/text_color" >
+    </View>
+
+    <TextView
+        style="@style/View.Text.Title"
+        android:text="@string/user_configuration_export_import" >
+    </TextView>
+
+    <TableRow android:gravity="center" >
+
+        <Button
+            android:id="@+id/buttonExportGoogle"
+            style="@style/View.Button"
+            android:text="@string/google_docs" >
+        </Button>
+
+        <Button
+            android:id="@+id/buttonExportEmail"
+            style="@style/View.Button"
+            android:text="@string/user_configuration_email" >
+        </Button>
+    </TableRow>
+
+</TableLayout>

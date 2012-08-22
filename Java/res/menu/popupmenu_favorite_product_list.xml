@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/popupEditFavoriteProductMapping"
+        android:showAsAction="ifRoom"
+        android:title="@string/popup_button_change">
+    </item>
+    <item
+        android:id="@+id/popupDeleteFavoriteProductMapping"
+        android:showAsAction="ifRoom"
+        android:title="@string/popup_button_delete">
+    </item>
+
+</menu>

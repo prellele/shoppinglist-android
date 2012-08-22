@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Layout.Vertical.Linear"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_full_holo_light"
+    android:scrollbarAlwaysDrawVerticalTrack="true" >
+
+    <TextView
+        style="@style/View.Text.Title"
+        android:text="@string/popup_google_import_file_title" >
+    </TextView>
+
+    <ListView
+        android:id="@+id/listViewGoogleDriveFilesImport"
+        style="@style/View.List.Clickable.Long" >
+    </ListView>
+
+    <Button
+        android:id="@+id/buttonDismissGoogleImportPopup"
+        style="@style/View.Button"
+        android:text="@string/button_abort" >
+    </Button>
+
+</LinearLayout>

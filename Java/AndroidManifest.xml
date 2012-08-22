@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="de.shoppinglist.android"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="13" />
+
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCOUNT_MANAGER" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+
+        <!-- MAIN ACTIVITY -->
+        <activity
+            android:name=".ShoppinglistActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- WIDGET PART -->
+        <receiver android:name=".widget.ShoppinglistWidgetProvider" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="de.g18.limepr.widget.ShoppinglistWidgetProvider.ACTION_WIDGET_UPDATE_DATA" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info" />
+        </receiver>
+        <receiver android:name=".widget.ShoppinglistWidgetBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="de.g18.limepr.widget.CLICK_ROW" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".widget.ShoppinglistWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <!-- OTHER ACTIVITIES -->
+        <activity
+            android:name=".StoreProductsActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".AddProductActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateVisible|adjustPan" >
+        </activity>
+        <activity
+            android:name=".UserConfigurationActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="localhost"
+                    android:scheme="http" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".EditProductActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateVisible|adjustPan" >
+        </activity>
+        <activity
+            android:name=".ManageStoresActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".ManageUnitsActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".ManageFavoritesActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".EditFavoriteActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateVisible|adjustPan" >
+        </activity>
+        <activity
+            android:name=".AddFavoriteActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateVisible|adjustPan" >
+        </activity>
+        <activity
+            android:name=".EditFavoriteProductListActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateVisible|adjustPan" >
+        </activity>
+        <activity
+            android:name=".EditFavoriteProductMappingActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateVisible|adjustPan" >
+        </activity>
+        <activity
+            android:name=".AddProductToFavoriteActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".AddStoreActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateVisible|adjustPan" >
+        </activity>
+        <activity
+            android:name=".AddUnitActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateVisible|adjustPan" >
+        </activity>
+        <activity
+            android:name=".EditStoreActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateVisible|adjustPan" >
+        </activity>
+        <activity
+            android:name=".EditUnitActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateVisible|adjustPan" >
+        </activity>
+        <activity
+            android:name=".ShowHistoryOverviewActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".ShowHistoryShoppinglist"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".SendEmailActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateVisible|adjustPan" >
+        </activity>
+
+        <!-- ACTIVITY FOR GOOGLE DRIVE -->
+        <activity
+            android:name=".googledrive.GoogleOAuthActivity"
+            android:exported="true"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".googledrive.DriveApiActivity"
+            android:label="@string/app_name" >
+        </activity>
+    </application>
+
+</manifest>

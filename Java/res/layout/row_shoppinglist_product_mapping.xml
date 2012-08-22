@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Layout.Horizontal.Table" >
+
+    <TextView
+        android:id="@+id/outputShoppinglistProductMapping"
+        style="@style/View.Text.Title" >
+    </TextView>
+
+    <ImageView
+        android:id="@+id/imageShoppinglistProductMappingChecked"
+        android:layout_width="@dimen/icon_size_square_checked"
+        android:layout_height="@dimen/icon_size_square_checked"
+        android:contentDescription="@string/icon_description_checked"
+        android:padding="@dimen/icon_padding_checked"
+        android:src="@drawable/ic_checked" >
+    </ImageView>
+
+</LinearLayout>

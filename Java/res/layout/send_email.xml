@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Layout.Vertical.Table" >
+
+    <TextView
+        style="@style/View.Text.Title"
+        android:text="@string/export_email_email_export" >
+    </TextView>
+
+    <TableRow>
+
+        <TextView
+            style="@style/View.Text.Label"
+            android:text="@string/export_email_email_address" >
+        </TextView>
+
+        <EditText
+            android:id="@+id/editTextRecipient"
+            style="@style/Edit.Text" >
+        </EditText>
+    </TableRow>
+
+    <TableRow android:gravity="center" >
+
+        <Button
+            android:id="@+id/buttonSend"
+            style="@style/View.Button"
+            android:text="@string/export_email_send" >
+        </Button>
+    </TableRow>
+
+</TableLayout>

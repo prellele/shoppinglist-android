@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Layout.Vertical.Linear"
+    android:scrollbarAlwaysDrawVerticalTrack="true" >
+
+    <TextView
+        android:id="@+id/titleHistoryShoppinglist"
+        style="@style/View.Text.Title" >
+    </TextView>
+
+    <ListView
+        android:id="@+id/listViewHistoryShoppinglist"
+        style="@style/View.List" >
+    </ListView>
+
+</LinearLayout>

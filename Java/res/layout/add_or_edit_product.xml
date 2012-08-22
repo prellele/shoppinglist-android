@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Layout.Vertical.Scroll"
+    android:scrollbarAlwaysDrawVerticalTrack="true" >
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:stretchColumns="1" >
+
+        <TextView
+            android:id="@+id/titleEditOrAddProduct"
+            style="@style/View.Text.Title" >
+        </TextView>
+
+        <TableRow>
+
+            <TextView
+                style="@style/View.Text.Label"
+                android:text="@string/label_add_new_product_quantity" >
+            </TextView>
+
+            <EditText
+                android:id="@+id/editTextQuantityAddProduct"
+                style="@style/Edit.Number" >
+            </EditText>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/View.Text.Label"
+                android:text="@string/label_add_new_product_unit" >
+            </TextView>
+
+            <Spinner
+                android:id="@+id/spinnerUnitAddProduct"
+                style="@style/View.Spinner" >
+            </Spinner>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/View.Text.Label"
+                android:text="@string/label_add_new_product_name" >
+            </TextView>
+
+            <EditText
+                android:id="@+id/editTextNameAddProduct"
+                style="@style/Edit.Text" >
+            </EditText>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/View.Text.Label"
+                android:text="@string/label_add_new_product_store" >
+            </TextView>
+
+            <Spinner
+                android:id="@+id/spinnerStoreAddProduct"
+                style="@style/View.Spinner" >
+            </Spinner>
+        </TableRow>
+
+        <TableRow android:gravity="center" >
+
+            <Button
+                android:id="@+id/buttonConfirmAddProduct"
+                style="@style/View.Button.Confirm" >
+            </Button>
+        </TableRow>
+    </TableLayout>
+
+</ScrollView>

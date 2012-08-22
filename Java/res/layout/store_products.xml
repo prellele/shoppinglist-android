@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Layout.Vertical.Linear"
+    android:scrollbarAlwaysDrawVerticalTrack="true" >
+
+    <TextView
+        android:id="@+id/storeProductsTextView"
+        style="@style/View.Text.Title" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/labelStoreProductsStatus"
+        style="@style/View.Text.Title"
+        android:textSize="@dimen/text_size_title" >
+    </TextView>
+
+    <ListView
+        android:id="@+id/listShoppinglistProductMappingsStore"
+        style="@style/View.List.Clickable.Long" >
+    </ListView>
+
+</LinearLayout>

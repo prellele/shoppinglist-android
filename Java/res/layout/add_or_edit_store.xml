@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Layout.Vertical.Table"
+    android:scrollbarAlwaysDrawVerticalTrack="true" >
+
+    <TextView
+        android:id="@+id/titleAddStore"
+        style="@style/View.Text.Title"
+        android:text="@string/title_add_store" >
+    </TextView>
+
+    <TableRow>
+
+        <TextView
+            style="@style/View.Text.Label"
+            android:text="@string/label_add_new_store_name" >
+        </TextView>
+
+        <EditText
+            android:id="@+id/editTextNameAddStore"
+            style="@style/Edit.Text" >
+        </EditText>
+    </TableRow>
+
+    <TableRow android:gravity="center" >
+
+        <Button
+            android:id="@+id/buttonConfirmAddStore"
+            style="@style/View.Button.Confirm" >
+        </Button>
+    </TableRow>
+
+</TableLayout>

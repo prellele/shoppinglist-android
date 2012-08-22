@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Layout.Vertical.Table"
+    android:scrollbarAlwaysDrawVerticalTrack="true" >
+
+    <TextView
+        style="@style/View.Text.Title"
+        android:text="@string/title_overview_alphabetically" >
+    </TextView>
+
+    <TableRow>
+
+        <TextView
+            android:id="@+id/labelAlphabeticallyOverviewStatus"
+            style="@style/View.Text.Title"
+            android:textSize="@dimen/text_size_title" >
+        </TextView>
+    </TableRow>
+
+    <TableRow>
+
+        <ListView
+            android:id="@+id/listShoppinglistProductMappingsAlphabetically"
+            style="@style/View.List.Clickable.Long" >
+        </ListView>
+    </TableRow>
+
+    <TableRow android:gravity="center" >
+
+        <Button
+            android:id="@+id/buttonAddToHistoryAlphabetOverview"
+            style="@style/View.Button.Gone"
+            android:text="@string/button_add_to_history" >
+        </Button>
+    </TableRow>
+
+</TableLayout>
