@@ -1,22 +1,28 @@
 package de.shoppinglist.android.helper;
 
+import de.shoppinglist.android.R;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import de.shoppinglist.android.constant.ConfigurationConstants;
 import de.shoppinglist.android.constant.DBConstants;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
-
+	
+	Resources resources;
+	
 	private static String DB_NAME = "shoppinglist.db";
 
 	public SQLiteHelper(final Context context) {
 		super(context, SQLiteHelper.DB_NAME, null, 1);
+		resources = context.getResources();
+
 	}
 
 	@Override
 	public void onCreate(final SQLiteDatabase db) {
-
+		
 		// Table: Store
 		db.execSQL("CREATE TABLE " + DBConstants.TAB_STORE_NAME + " (" + DBConstants.COL_STORE_ID
 				+ " INTEGER PRIMARY KEY NOT NULL," + DBConstants.COL_STORE_NAME + " VARCHAR(75) NOT NULL);");
@@ -89,19 +95,16 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
 		// Units
 		// Liter
-		db.execSQL("INSERT INTO " + DBConstants.TAB_UNIT_NAME + " (" + DBConstants.COL_UNIT_NAME + ") VALUES ('Liter');");
+		db.execSQL("INSERT INTO " + DBConstants.TAB_UNIT_NAME + " (" + DBConstants.COL_UNIT_NAME + ") VALUES ('"+resources.getString(R.string.sqlstatement_liter)+"');");
 		// Gramm
-		db.execSQL("INSERT INTO " + DBConstants.TAB_UNIT_NAME + " (" + DBConstants.COL_UNIT_NAME + ") VALUES ('Gramm');");
+		db.execSQL("INSERT INTO " + DBConstants.TAB_UNIT_NAME + " (" + DBConstants.COL_UNIT_NAME + ") VALUES ('"+resources.getString(R.string.sqlstatement_gram)+"');");
 		// Kilo
-		db.execSQL("INSERT INTO " + DBConstants.TAB_UNIT_NAME + " (" + DBConstants.COL_UNIT_NAME + ") VALUES ('Kilogramm');");
+		db.execSQL("INSERT INTO " + DBConstants.TAB_UNIT_NAME + " (" + DBConstants.COL_UNIT_NAME + ") VALUES ('"+resources.getString(R.string.sqlstatement_kilogram)+"');");
 		// Paket(e)
-		db.execSQL("INSERT INTO " + DBConstants.TAB_UNIT_NAME + " (" + DBConstants.COL_UNIT_NAME + ") VALUES ('Paket(e)');");
-		// Stück
-		db.execSQL("INSERT INTO " + DBConstants.TAB_UNIT_NAME + " (" + DBConstants.COL_UNIT_NAME + ") VALUES ('St&uuml;ck');");
-
+		db.execSQL("INSERT INTO " + DBConstants.TAB_UNIT_NAME + " (" + DBConstants.COL_UNIT_NAME + ") VALUES ('"+resources.getString(R.string.sqlstatement_packets)+"');");
 		// Stores
 		// keine Angabe - Standard Markt
-		db.execSQL("INSERT INTO " + DBConstants.TAB_STORE_NAME + " (" + DBConstants.COL_STORE_NAME + ") VALUES ('keine Angabe');");
+		db.execSQL("INSERT INTO " + DBConstants.TAB_STORE_NAME + " (" + DBConstants.COL_STORE_NAME + ") VALUES ('"+resources.getString(R.string.sqlstatement_not_specified)+"');");
 
 		// Shoppinglist
 		// need to have an initial shoppinglist
@@ -110,7 +113,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 	}
 
 	@Override
-	public void onUpgrade(final SQLiteDatabase db, final int oldVersion, final int newVersion) {
+	public void onUpgrade(final SQLiteDatabase db, final int oldVersion,
+			final int newVersion) {
 
 	}
 }

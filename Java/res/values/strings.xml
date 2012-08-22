@@ -30,8 +30,8 @@
     <string name="title_overview_alphabetically">alphabetical shoppinglist</string>
     <string name="title_edit_product">edit product</string>
     <string name="icon_description_checked">already bought</string>
-    <string name="title_manage_stores">manage sotres</string>
-    <string name="title_manage_units">manage unites</string>
+    <string name="title_manage_stores">manage stores</string>
+    <string name="title_manage_units">manage units</string>
     <string name="actionbar_manage_favorites">manage favorites</string>
     <string name="title_manage_favorites">manage favorites</string>
     <string name="actionbar_add_new_store">+ market </string>
@@ -72,5 +72,10 @@
     <string name="import_google_drive_title">Google Drive emport</string>
     <string name="popup_google_import_file_title">select shoppinglist ...</string>
     <string name="button_abort">cancel</string>
+    <string name="sqlstatement_not_specified">not specified</string>
+    <string name="sqlstatement_liter">liter</string>
+    <string name="sqlstatement_kilogram">kilogram</string>
+    <string name="sqlstatement_packets">packets</string>
+    <string name="sqlstatement_gram">gram</string>
 
 </resources>

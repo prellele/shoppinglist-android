@@ -70,7 +70,12 @@
     <string name="export_google_button_export">Exportieren</string>
     <string name="import_google_button">Importieren</string>
     <string name="import_google_drive_title">Google Drive Import</string>
-    <string name="popup_google_import_file_title">Einkaufsliste auswählen ...</string>
+    <string name="popup_google_import_file_title">Einkaufsliste auswählen..</string>
     <string name="button_abort">Abbrechen</string>
+    <string name="sqlstatement_not_specified">keine Angabe</string>
+    <string name="sqlstatement_liter">Liter</string>
+    <string name="sqlstatement_kilogram">Kilogramm</string>
+    <string name="sqlstatement_packets">Paket(e)</string>
+    <string name="sqlstatement_gram">Gramm</string>
 
 </resources>

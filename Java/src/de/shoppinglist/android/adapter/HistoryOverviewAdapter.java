@@ -31,10 +31,9 @@ public class HistoryOverviewAdapter extends ArrayAdapter<Shoppinglist> {
 
 		final Shoppinglist shoppinglistToBeShown = this.values.get(position);
 
-		final Date createdTime = GMTToLocalTimeConverter.convert(shoppinglistToBeShown.getCreatedTime());
 		final Date finishedTime = GMTToLocalTimeConverter.convert(shoppinglistToBeShown.getFinishedTime());
 
-		textView.setText(createdTime.toLocaleString() + " bis " + finishedTime.toLocaleString());
+		textView.setText(finishedTime.toLocaleString());
 
 		return textView;
 	}
