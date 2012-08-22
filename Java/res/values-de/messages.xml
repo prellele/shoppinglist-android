@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="msg_favorite_already_exists">Es existiert bereits eine Favoritenliste mit diesem Namen</string>
+    <string name="msg_store_already_exists">Es existiert bereits ein Markt mit diesem Namen</string>
+    <string name="msg_unit_already_exists">Es existiert bereits eine Einheit mit diesem Namen</string>
+    <string name="msg_really_delete_favoritelist">Sind Sie sich sicher, dass die Favoritenliste unwiderruflich gelöscht werden soll?</string>
+    <string name="msg_yes">Ja</string>
+    <string name="msg_no">Nein</string>
+    <string name="msg_store_in_use_cant_delete">Dieser Markt ist in Benutzung und kann daher nicht gelöscht werden</string>
+    <string name="msg_last_store_cant_delete">Es muss mindestens ein Markt existieren</string>
+    <string name="msg_unit_in_use_cant_delete">Diese Einheit ist in Benutzung und kann daher nicht gelöscht werden</string>
+    <string name="msg_really_delete_history">Sind Sie sich sicher, den komplette Verlauf unwiderruflich zu löschen?</string>
+    <string name="msg_really_delete_shoppinglist">Sind Sie sich sicher, die komplette Einkaufsliste unwiderruflich zu löschen?</string>
+    <string name="msg_really_add_shoppinglist_to_history">Sind Sie sich sicher, dass die aktuelle Einkaufsliste zum Verlauf hinzugefügt werden soll? Die aktuelle Einkaufsliste wird nur noch im Verlauf einsehbar sein.</string>
+    <string name="msg_cannot_be_emtpy">Feld darf nicht leer sein</string>
+    <string name="msg_no_permission_google_oauth">Die Anwendung hat nicht die benötigten Rechte.</string>
+    <string name="msg_google_export_successful">Die Einkaufsliste wurde erfolgreich exportiert.</string>
+    <string name="msg_google_export_file_description">Die exportierte Einkaufsliste.</string>
+    <string name="msg_google_export_empty_shoppinglist">Die Einkaufsliste ist leer. Es gibt nichts zu exportieren.</string>
+    <string name="msg_google_import_not_compatible">Die ausgewählte Datei ist keine gültige Einkaufsliste für diese Anwendung.</string>
+    <string name="msg_google_import_successful">Die Einkaufsliste wurde erfolgreich importiert.</string>
+    <string name="msg_google_export_exporting">Einkaufsliste wird exportiert ...</string>
+    <string name="msg_google_import_importing">Einkaufsliste wird importiert ...</string>
+    <string name="msg_google_import_export_oauth">Verbindung zu Google Drive wird hergestellt ...</string>
+
+</resources>
