@@ -7,21 +7,21 @@
     <string name="msg_really_delete_favoritelist">are you sure you want to delete this favorite list?</string>
     <string name="msg_yes">yes</string>
     <string name="msg_no">no</string>
-    <string name="msg_store_in_use_cant_delete">this market is in use and can't be deleted</string>
+    <string name="msg_store_in_use_cant_delete">this market is in use and can\'t be deleted</string>
     <string name="msg_last_store_cant_delete">at least one market have to exists</string>
-    <string name="msg_unit_in_use_cant_delete">this unit is in use and can't be deleted</string>
+    <string name="msg_unit_in_use_cant_delete">this unit is in use and can\'t be deleted</string>
     <string name="msg_really_delete_history">are  you sure you want to delete the complete history?</string>
     <string name="msg_really_delete_shoppinglist">are you sure you want to delete the complete shoppinglist?</string>
     <string name="msg_really_add_shoppinglist_to_history">are you sure you want to move the current shoppinglist to history?</string>
-    <string name="msg_cannot_be_emtpy">this field cannot be empty</string>
-    <string name="msg_no_permission_google_oauth">The application hasn't enough permissions.</string>
+    <string name="msg_cannot_be_emtpy">this field can\'t be empty</string>
+    <string name="msg_no_permission_google_oauth">The application hasn\'t enough permissions.</string>
     <string name="msg_google_export_successful">the shoppinglist is successfully exported.</string>
     <string name="msg_google_export_file_description">the exported shoppinglist.</string>
-    <string name="msg_google_export_empty_shoppinglist">the shoppinglist is empty. There's nothing to export.</string>
+    <string name="msg_google_export_empty_shoppinglist">the shoppinglist is empty. There\'s nothing to export.</string>
     <string name="msg_google_import_not_compatible">The selected file is incompatible.</string>
     <string name="msg_google_import_successful">The shoppinglist where successfully imported.</string>
-    <string name="msg_google_export_exporting">Shoppinglist is beeing exported ...</string>
-    <string name="msg_google_import_importing">Shoppinglist is beeing imported ...</string>
+    <string name="msg_google_export_exporting">Shoppinglist is beeing exported...</string>
+    <string name="msg_google_import_importing">Shoppinglist is beeing imported...</string>
     <string name="msg_google_import_export_oauth">Conntecting to Google Drive...</string>
 
 </resources>
