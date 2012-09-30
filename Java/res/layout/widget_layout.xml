@@ -3,14 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:scrollbarAlwaysDrawVerticalTrack="true" >
+    android:scrollbarAlwaysDrawVerticalTrack="true"    
+    android:padding="@dimen/widget_padding_layout_vertical" >
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_size_height"
-        android:background="#FDFAAD"
+        android:background="@drawable/linien_bg"
         android:text="@string/widget_title"
-        android:textColor="@color/text_color"
+        android:textColor="@color/widget_title_color"
+        android:shadowColor="#DEDEDE"
+        android:shadowDx="1"
+    	android:shadowDy="1"
+    	android:gravity="center" 
+        
         android:textSize="@dimen/text_size_title" >
     </TextView>
 
@@ -19,9 +25,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dip"
         android:layout_weight="1"
-        android:background="#FDFAAD"
-        android:divider="#A33F3B"
-        android:dividerHeight="1.5dp"
+        android:background="#FAFAFA"
+        android:divider="#EDEDED"
+        android:dividerHeight="1dp"
         android:footerDividersEnabled="false" >
     </ListView>
 

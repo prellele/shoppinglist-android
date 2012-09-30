@@ -8,6 +8,7 @@
         android:id="@+id/widgetRowCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:padding="5dip"
         android:contentDescription="@string/widget_image_checkbox_description"
         android:gravity="center_vertical" >
     </ImageView>
@@ -17,7 +18,7 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/widget_image_stripline_description"
         android:gravity="center_vertical"
-        android:src="@drawable/ic_stripline_widget" >
+        android:src="@drawable/widget_stripline" >
     </ImageView>
 
     <TextView

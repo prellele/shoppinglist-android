@@ -77,12 +77,12 @@ public class ShoppinglistViewsFactory implements RemoteViewsFactory {
 		// checked_checkbox
 		if (this.shoppinglistProductMappings.get(position).isChecked() == GlobalValues.YES) {
 			row.setInt(R.id.widgetRowText, "setPaintFlags", Paint.STRIKE_THRU_TEXT_FLAG);
-			row.setImageViewResource(R.id.widgetRowCheckBox, R.drawable.ic_checked_checkbox);
+			row.setImageViewResource(R.id.widgetRowCheckBox, R.drawable.checked_box);
 		} else {
 
 			row.setInt(R.id.widgetRowText, "setPaintFlags", ~Paint.UNDERLINE_TEXT_FLAG & ~Paint.STRIKE_THRU_TEXT_FLAG
 					& ~Paint.FAKE_BOLD_TEXT_FLAG);
-			row.setImageViewResource(R.id.widgetRowCheckBox, R.drawable.ic_unchecked_checkbox);
+			row.setImageViewResource(R.id.widgetRowCheckBox, R.drawable.check_box);
 		}
 
 		final Intent i = new Intent();
