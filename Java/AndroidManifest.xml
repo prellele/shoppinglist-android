@@ -4,9 +4,7 @@
     android:versionCode="2"
     android:versionName="Shoppinglist" >
 
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="15" />
+    <uses-sdk android:minSdkVersion="13" />
 
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" >
     </uses-permission>
