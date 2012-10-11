@@ -16,7 +16,6 @@
         android:shadowDx="1"
     	android:shadowDy="1"
     	android:gravity="center" 
-        
         android:textSize="@dimen/text_size_title" >
     </TextView>
 
