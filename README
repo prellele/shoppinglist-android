@@ -1,3 +1,14 @@
 Shoppinglist
 
 Shoppinglist is a open source app on Android to store all your items you wanna buy.
+
+the following functionality is covered:
+-manage stores
+-manage units
+-manage products
+-use favorite lists
+-export, import to Google Drive
+-send current shoppinglist via email
+
+You can get it also via Google Play Store:
+https://play.google.com/store/apps/details?id=de.shoppinglist.android
