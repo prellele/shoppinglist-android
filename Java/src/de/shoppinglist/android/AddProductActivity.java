@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -30,9 +31,9 @@ public class AddProductActivity extends AbstractShoppinglistActivity {
 	private ShoppinglistDataSource datasource;
 
 	private final List<Integer> editTextIds = new LinkedList<Integer>(Arrays.asList(R.id.editTextQuantityAddProduct,
-			R.id.editTextNameAddProduct));
+			R.id.editTextProductNameAutocomplete));
 
-	private EditText editTextProductName;
+	private AutoCompleteTextView editTextProductName;
 
 	private EditText editTextQuantity;
 
@@ -63,8 +64,10 @@ public class AddProductActivity extends AbstractShoppinglistActivity {
 		final ArrayAdapter<Store> spinnerStoreAdapter = new StoreAdapter(this, stores);
 		this.spinnerStores.setAdapter(spinnerStoreAdapter);
 
-		this.editTextProductName = (EditText) this.findViewById(R.id.editTextNameAddProduct);
-		this.editTextProductName.addTextChangedListener(super.getTextWatcher(R.id.editTextNameAddProduct));
+		this.editTextProductName = (AutoCompleteTextView) this.findViewById(R.id.editTextProductNameAutocomplete);
+		this.editTextProductName.addTextChangedListener(super.getTextWatcher(R.id.editTextProductNameAutocomplete));
+		editTextProductName.setAdapter(new ArrayAdapter<String>(this, R.layout.autocomplete,
+				this.datasource.getAllProductNames()));
 
 		this.editTextQuantity = (EditText) this.findViewById(R.id.editTextQuantityAddProduct);
 		this.editTextQuantity.addTextChangedListener(super.getTextWatcher(R.id.editTextQuantityAddProduct));

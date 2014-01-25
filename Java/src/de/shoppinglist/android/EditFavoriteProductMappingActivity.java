@@ -34,7 +34,7 @@ public class EditFavoriteProductMappingActivity extends AbstractShoppinglistActi
 	private EditText editTextQuantity;
 
 	private List<Integer> editTextIds = new LinkedList<Integer>(Arrays.asList(R.id.editTextQuantityAddProduct,
-			R.id.editTextNameAddProduct));
+			R.id.editTextProductNameAutocomplete));
 
 	private Spinner spinnerStores;
 
@@ -63,8 +63,8 @@ public class EditFavoriteProductMappingActivity extends AbstractShoppinglistActi
 		final ArrayAdapter<Store> spinnerStoreAdapter = new StoreAdapter(this, stores);
 		this.spinnerStores.setAdapter(spinnerStoreAdapter);
 
-		this.editTextProductName = (EditText) this.findViewById(R.id.editTextNameAddProduct);
-		this.editTextProductName.addTextChangedListener(super.getTextWatcher(R.id.editTextNameAddProduct));
+		this.editTextProductName = (EditText) this.findViewById(R.id.editTextProductNameAutocomplete);
+		this.editTextProductName.addTextChangedListener(super.getTextWatcher(R.id.editTextProductNameAutocomplete));
 
 		this.editTextQuantity = (EditText) this.findViewById(R.id.editTextQuantityAddProduct);
 		this.editTextQuantity.addTextChangedListener(super.getTextWatcher(R.id.editTextQuantityAddProduct));

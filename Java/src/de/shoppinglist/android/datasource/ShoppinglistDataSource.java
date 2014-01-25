@@ -1,6 +1,7 @@
 package de.shoppinglist.android.datasource;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -1636,6 +1637,34 @@ public class ShoppinglistDataSource {
 		this.database.execSQL(sqlQuery);
 	}
 
+
+	/**
+	 * gets all product names for Auto-Complete from the DB (Table: Product)
+	 * 
+	 * @return List<String> productNames
+	 */
+	public List<String> getAllProductNames() {
+		this.isDbLockedByThread();
+
+		final String sqlQuery = "SELECT " + DBConstants.COL_PRODUCT_NAME
+				+ " FROM "+ DBConstants.TAB_PRODUCT_NAME + " ORDER BY "
+				+ DBConstants.COL_PRODUCT_NAME;
+
+		final Cursor cursor = this.database.rawQuery(sqlQuery, null);
+		
+		final List <String> productNames = new ArrayList<String>();
+
+		while (cursor.moveToNext()) {
+			String productName = cursor.getString(cursor
+					.getColumnIndex(DBConstants.COL_PRODUCT_NAME));
+			productNames.add(productName);
+		}
+		cursor.close();
+
+		return productNames;
+	}
+	
+	
 	/**
 	 * 
 	 * <p>
