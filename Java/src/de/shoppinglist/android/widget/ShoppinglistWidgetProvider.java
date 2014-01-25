@@ -22,15 +22,15 @@ import de.shoppinglist.android.datasource.ShoppinglistDataSourceModel;
 
 public class ShoppinglistWidgetProvider extends AppWidgetProvider {
 
-	public static String CLICK_ROW = "de.g18.limepr.widget.CLICK_ROW";
+	public static String CLICK_ROW = "de.shoppinglist.android.widget.CLICK_ROW";
 
-	public static String CLICKED_ROW_SHOPPINGLISTPRODUCTMAPPING_CHECKED = "de.g18.limepr.widget.CLICKED_ROW_SHOPPINGLISTPRODUCTMAPPING_CHECKED";
+	public static String CLICKED_ROW_SHOPPINGLISTPRODUCTMAPPING_CHECKED = "de.shoppinglist.android.widget.CLICKED_ROW_SHOPPINGLISTPRODUCTMAPPING_CHECKED";
 
-	public static String CLICKED_ROW_SHOPPINGLISTPRODUCTMAPPING_ID = "de.g18.limepr.widget.CLICKED_ROW_SHOPPINGLISTPRODUCTMAPPING_ID";
+	public static String CLICKED_ROW_SHOPPINGLISTPRODUCTMAPPING_ID = "de.shoppinglist.android.widget.CLICKED_ROW_SHOPPINGLISTPRODUCTMAPPING_ID";
 
-	public static String CLICKED_WIDGET_ID = "de.g18.limepr.widget.CLICKED_WIDGET_ID";
+	public static String CLICKED_WIDGET_ID = "de.shoppinglist.android.widget.CLICKED_WIDGET_ID";
 
-	public static String UPDATE_DATA = "de.g18.limepr.widget.UPDATE_DATA";
+	public static String UPDATE_DATA = "de.shoppinglist.android.widget.UPDATE_DATA";
 
 	/** {@inheritDoc} **/
 	@Override

@@ -45,40 +45,38 @@ public class ShowHistoryOverviewActivity extends AbstractShoppinglistActivity {
 
 		this.historyShoppinglists = this.datasource.getHistoryShoppinglists();
 
-		this.historyAdapter = new HistoryOverviewAdapter(this.context,
-				this.historyShoppinglists);
+		this.historyAdapter = new HistoryOverviewAdapter(this.context, this.historyShoppinglists);
 
-		this.listViewHistory = (ListView) this
-				.findViewById(R.id.listViewHistoryOverview);
+		this.listViewHistory = (ListView) this.findViewById(R.id.listViewHistoryOverview);
 		this.listViewHistory.setAdapter(this.historyAdapter);
 
 		// handle clicks on the historyItems
 		this.listViewHistory.setOnItemClickListener(new OnItemClickListener() {
 
-			public void onItemClick(final AdapterView<?> arg0, final View v,
-					final int position, final long id) {
+			public void onItemClick(final AdapterView<?> arg0, final View v, final int position,
+					final long id) {
 
 				// call another Activity to show the details of the clicked
 				// historyItem
 				final Shoppinglist clickedHistoryShoppinglist = ShowHistoryOverviewActivity.this.historyAdapter
 						.getItem(position);
 
-				final Intent intent = new Intent(v.getContext(),
-						ShowHistoryShoppinglist.class);
-				intent.putExtra(DBConstants.COL_SHOPPINGLIST_ID,
-						clickedHistoryShoppinglist.getId());
+				final Intent intent = new Intent(v.getContext(), ShowHistoryShoppinglist.class);
+				intent.putExtra(DBConstants.COL_SHOPPINGLIST_ID, clickedHistoryShoppinglist.getId());
 
-				final Date clickedShoppinglistCreatedTime = GMTToLocalTimeConverter
-						.convert(clickedHistoryShoppinglist.getCreatedTime());
-				final Date clickedShoppinglistFinishedTime = GMTToLocalTimeConverter
-						.convert(clickedHistoryShoppinglist.getFinishedTime());
-
-				intent.putExtra(DBConstants.COL_SHOPPINGLIST_CREATED_TIME,
-						clickedShoppinglistCreatedTime.toLocaleString());
-				intent.putExtra(DBConstants.COL_SHOPPINGLIST_FINISHED_TIME,
-						clickedShoppinglistFinishedTime.toLocaleString());
-				ShowHistoryOverviewActivity.this.startActivityForResult(intent,
-						0);
+				if (clickedHistoryShoppinglist.getCreatedTime() != null) {
+					final Date clickedShoppinglistCreatedTime = GMTToLocalTimeConverter
+							.convert(clickedHistoryShoppinglist.getCreatedTime());
+					intent.putExtra(DBConstants.COL_SHOPPINGLIST_CREATED_TIME,
+							clickedShoppinglistCreatedTime.toLocaleString());
+				}
+				if (clickedHistoryShoppinglist.getFinishedTime() != null) {
+					final Date clickedShoppinglistFinishedTime = GMTToLocalTimeConverter
+							.convert(clickedHistoryShoppinglist.getFinishedTime());
+					intent.putExtra(DBConstants.COL_SHOPPINGLIST_FINISHED_TIME,
+							clickedShoppinglistFinishedTime.toLocaleString());
+				}
+				ShowHistoryOverviewActivity.this.startActivityForResult(intent, 0);
 			}
 
 		});
@@ -104,29 +102,22 @@ public class ShowHistoryOverviewActivity extends AbstractShoppinglistActivity {
 		// AddProductbutton - Actionbar
 		case R.id.actionbarDeleteHistory:
 			final AlertDialog.Builder alertBox = new AlertDialog.Builder(this);
-			alertBox.setMessage(this
-					.getString(R.string.msg_really_delete_history));
-			alertBox.setPositiveButton(this.getString(R.string.msg_yes),
-					new OnClickListener() {
+			alertBox.setMessage(this.getString(R.string.msg_really_delete_history));
+			alertBox.setPositiveButton(this.getString(R.string.msg_yes), new OnClickListener() {
 
-						public void onClick(final DialogInterface dialog,
-								final int which) {
-							ShowHistoryOverviewActivity.this.datasource
-									.deleteHistory();
+				public void onClick(final DialogInterface dialog, final int which) {
+					ShowHistoryOverviewActivity.this.datasource.deleteHistory();
 
-							ShowHistoryOverviewActivity.this.historyAdapter
-									.clear();
-						}
-					});
+					ShowHistoryOverviewActivity.this.historyAdapter.clear();
+				}
+			});
 
-			alertBox.setNegativeButton(this.getString(R.string.msg_no),
-					new OnClickListener() {
+			alertBox.setNegativeButton(this.getString(R.string.msg_no), new OnClickListener() {
 
-						public void onClick(final DialogInterface dialog,
-								final int which) {
-							// do nothing here
-						}
-					});
+				public void onClick(final DialogInterface dialog, final int which) {
+					// do nothing here
+				}
+			});
 
 			alertBox.show();
 
@@ -143,11 +134,9 @@ public class ShowHistoryOverviewActivity extends AbstractShoppinglistActivity {
 		super.onResume();
 
 		this.historyShoppinglists = this.datasource.getHistoryShoppinglists();
-		this.historyAdapter = new HistoryOverviewAdapter(this.context,
-				this.historyShoppinglists);
+		this.historyAdapter = new HistoryOverviewAdapter(this.context, this.historyShoppinglists);
 
-		this.listViewHistory = (ListView) this
-				.findViewById(R.id.listViewHistoryOverview);
+		this.listViewHistory = (ListView) this.findViewById(R.id.listViewHistoryOverview);
 		this.listViewHistory.setAdapter(this.historyAdapter);
 
 	}

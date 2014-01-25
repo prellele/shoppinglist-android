@@ -354,6 +354,7 @@ public class ShoppinglistDataSource {
 		// then insert a new one
 		final String sqlInsertNew = "INSERT INTO "
 				+ DBConstants.TAB_SHOPPINGLIST_NAME + " ("
+				+ DBConstants.COL_SHOPPINGLIST_CREATED_TIME
 				+ ") VALUES (CURRENT_TIMESTAMP)";
 
 		this.database.execSQL(sqlInsertNew);
