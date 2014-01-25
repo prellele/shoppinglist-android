@@ -4,8 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:scrollbarAlwaysDrawVerticalTrack="true"    
-    android:padding="@dimen/widget_padding_layout_vertical" >
-
+    android:padding="@dimen/widget_padding_layout_vertical" 
+	android:scaleType="matrix" >
+	
     <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_size_height"
@@ -22,12 +23,11 @@
     <ListView
         android:id="@+id/widgetListShoppinglistProductMappingsAlphabetically"
         android:layout_width="match_parent"
-        android:layout_height="0dip"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:background="#FAFAFA"
         android:divider="#EDEDED"
-        android:dividerHeight="1dp"
-        android:footerDividersEnabled="false" >
+        android:dividerHeight="1dp" >
     </ListView>
 
 </LinearLayout>

@@ -23,12 +23,13 @@
 
     <TextView
         android:id="@+id/widgetRowText"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:maxLines="1"
         android:paddingLeft="@dimen/padding_all_elements"
-        android:textColor="@color/text_color" >
+        android:textColor="@color/text_color" 
+        android:textSize="13sp"
+        android:singleLine="true"
+        android:layout_gravity="center" >
     </TextView>
 
 </LinearLayout>

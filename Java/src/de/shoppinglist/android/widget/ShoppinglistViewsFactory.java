@@ -80,8 +80,7 @@ public class ShoppinglistViewsFactory implements RemoteViewsFactory {
 			row.setImageViewResource(R.id.widgetRowCheckBox, R.drawable.checked_box);
 		} else {
 
-			row.setInt(R.id.widgetRowText, "setPaintFlags", ~Paint.UNDERLINE_TEXT_FLAG & ~Paint.STRIKE_THRU_TEXT_FLAG
-					& ~Paint.FAKE_BOLD_TEXT_FLAG);
+			
 			row.setImageViewResource(R.id.widgetRowCheckBox, R.drawable.check_box);
 		}
 

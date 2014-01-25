@@ -5,15 +5,11 @@
     android:versionName="1.1" >
 
     <uses-sdk android:minSdkVersion="13" />
-
-    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.INTERNET" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" >
-    </uses-permission>
+	
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="android.permission.ACCOUNT_MANAGER" />
 
     <application
@@ -35,16 +31,16 @@
         <receiver android:name=".widget.ShoppinglistWidgetProvider" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="de.g18.limepr.widget.ShoppinglistWidgetProvider.ACTION_WIDGET_UPDATE_DATA" />
+                <action android:name="de.shoppinglist.android.widget.ShoppinglistWidgetProvider.ACTION_WIDGET_UPDATE_DATA" />
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info" />
         </receiver>
-        <receiver android:name=".widget.ShoppinglistWidgetBroadcastReceiver" >
+        <receiver android:name="de.shoppinglist.android.widget.ShoppinglistWidgetBroadcastReceiver" >
             <intent-filter>
-                <action android:name="de.g18.limepr.widget.CLICK_ROW" />
+                <action android:name="de.shoppinglist.android.widget.CLICK_ROW" />
             </intent-filter>
         </receiver>
 

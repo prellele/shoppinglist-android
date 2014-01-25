@@ -73,7 +73,7 @@ public class DriveApiActivity extends AbstractShoppinglistActivity {
 
 	private String fileName;
 
-	private final String filePath = "/data/data/de.g18.limepr/";
+	private final String filePath = "/data/data/de.shopplinglist.android/";
 
 	private String fileTitle;
 
