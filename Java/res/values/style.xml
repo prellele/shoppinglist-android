@@ -7,7 +7,7 @@
     </style>
 
     <style name="Layout.Vertical">
-        <item name="android:background">@drawable/background_portrait</item>
+        <item name="android:background">#FAFAFA</item>
         <item name="android:orientation">vertical</item>
     </style>
 
@@ -141,11 +141,12 @@
     <dimen name="stripline_margin_bottom">15dp</dimen>
     <dimen name="stripline_line_height">1dp</dimen>
     <dimen name="invisible_stripline_line_height">0dp</dimen>
+
     <dimen name="widget_padding_layout_vertical">7dp</dimen>
     <dimen name="widget_padding_layout_horizontal">5dp</dimen>
     
+    <color name="greyed_text_color">#AAAAAA</color>
     <color name="text_color">#4D4D4D</color>
-    <color name="widget_text_color">#4D4D4D</color>
     <color name="widget_title_color">#F8F8F8</color>
 
 </resources>

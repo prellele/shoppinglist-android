@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/Layout.Horizontal.Table" >
-
-    <TextView
-        android:id="@+id/outputShoppinglistProductMapping"
-        style="@style/View.Text.Title" >
-    </TextView>
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbarAlwaysDrawVerticalTrack="true" >
 
     <ImageView
-        android:id="@+id/imageShoppinglistProductMappingChecked"
-        android:layout_width="@dimen/icon_size_square_checked"
-        android:layout_height="@dimen/icon_size_square_checked"
-        android:contentDescription="@string/icon_description_checked"
-        android:padding="@dimen/icon_padding_checked"
-        android:src="@drawable/ic_checked" >
+        android:id="@+id/rowCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:padding="5dip"
+        android:contentDescription="@string/widget_image_checkbox_description"
+        android:gravity="center_vertical" >
     </ImageView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/widget_image_stripline_description"
+        android:gravity="center_vertical"
+        android:src="@drawable/widget_stripline" >
+    </ImageView>
+
+    <TextView
+        android:id="@+id/rowText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/padding_all_elements"
+        android:textColor="@color/text_color" 
+        android:textSize="15sp"
+        android:singleLine="true"
+        android:layout_gravity="center" >
+    </TextView>
 
 </LinearLayout>

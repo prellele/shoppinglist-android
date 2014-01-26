@@ -5,11 +5,13 @@ import java.util.List;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService.RemoteViewsFactory;
 import de.shoppinglist.android.R;
+import de.shoppinglist.android.R.color;
 import de.shoppinglist.android.bean.ShoppinglistProductMapping;
 import de.shoppinglist.android.constant.GlobalValues;
 import de.shoppinglist.android.datasource.ShoppinglistDataSource;
@@ -71,16 +73,19 @@ public class ShoppinglistViewsFactory implements RemoteViewsFactory {
 		final String productName = this.shoppinglistProductMappings.get(position).getProduct().getName();
 		final String storeName = this.shoppinglistProductMappings.get(position).getStore().getName();
 
-		row.setTextViewText(R.id.widgetRowText, quantity + " " + unitName + " " + productName + " (" + storeName + ")");
+		String text = quantity + " " + unitName + " " + productName;
+		if (this.shoppinglistProductMappings.get(position).getStore().getId() != 1)		
+			text+= " (" + storeName + ")";
+		
+		row.setTextViewText(R.id.widgetRowText, text);
 
 		// strikethrough the text, if the item is already checked and show the
 		// checked_checkbox
 		if (this.shoppinglistProductMappings.get(position).isChecked() == GlobalValues.YES) {
-			row.setInt(R.id.widgetRowText, "setPaintFlags", Paint.STRIKE_THRU_TEXT_FLAG);
+			row.setTextColor(R.id.widgetRowText, Color.GRAY);
 			row.setImageViewResource(R.id.widgetRowCheckBox, R.drawable.checked_box);
 		} else {
-
-			
+			row.setTextColor(R.id.widgetRowText, Color.BLACK);
 			row.setImageViewResource(R.id.widgetRowCheckBox, R.drawable.check_box);
 		}
 

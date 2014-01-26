@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import de.shoppinglist.android.R;
@@ -34,8 +35,8 @@ public class ShoppinglistProductMappingAdapter extends ArrayAdapter<Shoppinglist
 
 		// final TextView textView = (TextView) super.getView(position,
 		// convertView, parent);
-		final TextView textView = (TextView) rowView.findViewById(R.id.outputShoppinglistProductMapping);
-		final ImageView imageView = (ImageView) rowView.findViewById(R.id.imageShoppinglistProductMappingChecked);
+		final TextView textView = (TextView) rowView.findViewById(R.id.rowText);
+		final ImageView checkBox = (ImageView) rowView.findViewById(R.id.rowCheckBox);
 
 		final ShoppinglistProductMapping shoppinglistProductMappingToShow = this.values.get(position);
 
@@ -43,14 +44,13 @@ public class ShoppinglistProductMappingAdapter extends ArrayAdapter<Shoppinglist
 
 		if (shoppinglistProductMappingToShow.isChecked() == GlobalValues.YES) {
 			// paint the strikethrough
-			textView.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-			imageView.setImageResource(R.drawable.ic_checked);
-
+			checkBox.setImageResource(R.drawable.checked_box);
+			textView.setTextColor(textView.getResources().getColor(R.color.greyed_text_color));
+			
+			
 		} else if (shoppinglistProductMappingToShow.isChecked() == GlobalValues.NO) {
 			// remove the strikethrough
-			textView.setPaintFlags(textView.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
-			imageView.setImageBitmap(null);
-
+			checkBox.setImageResource(R.drawable.check_box);
 		}
 
 		return rowView;

@@ -340,7 +340,7 @@ public class StoreProductsActivity extends AbstractShoppinglistActivity {
 			// update the title - show the clicked/shown store
 			String updateTitle = this.getResources().getString(
 					R.string.store_products_view);
-			updateTitle += " " + store.getName();
+			updateTitle += " \"" + store.getName() + " \"";
 			this.storeProductsTitleTextView.setText(updateTitle);
 
 			if (this.shoppinglistProductMappingAdapter.getCount() == 0) {
