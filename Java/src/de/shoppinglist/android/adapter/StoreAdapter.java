@@ -29,8 +29,8 @@ public class StoreAdapter extends ArrayAdapter<Store> {
 		final TextView textView = (TextView) super.getView(position, convertView, parent);
 
 		final Store storeToBeShown = this.values.get(position);
-		final int colorToUse = ProcessColorHelper.getColorForProcess(storeToBeShown.getAlreadyCheckedProducts(),
-				storeToBeShown.getCountProducts());
+		final int colorToUse = ProcessColorHelper.getColorForProcess(
+				storeToBeShown.getAlreadyCheckedProducts(), storeToBeShown.getCountProducts());
 
 		textView.setText(storeToBeShown.toString());
 		textView.setTextColor(colorToUse);

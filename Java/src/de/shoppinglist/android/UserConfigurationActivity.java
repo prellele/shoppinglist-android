@@ -39,7 +39,8 @@ public class UserConfigurationActivity extends AbstractShoppinglistActivity {
 		this.setContentView(R.layout.user_configuration);
 
 		this.radioButtonViewTypeStore = (RadioButton) this.findViewById(R.id.radioButtonViewStore);
-		this.radioButtonViewTypeAlphabetically = (RadioButton) this.findViewById(R.id.radioButtonViewAlphabetically);
+		this.radioButtonViewTypeAlphabetically = (RadioButton) this
+				.findViewById(R.id.radioButtonViewAlphabetically);
 		final short viewType = this.datasource.getUserConfigurationViewType();
 
 		if (viewType == ConfigurationConstants.STORE_VIEW) {
@@ -58,7 +59,8 @@ public class UserConfigurationActivity extends AbstractShoppinglistActivity {
 				if (UserConfigurationActivity.this.radioButtonViewTypeStore.isChecked()) {
 					viewType = ConfigurationConstants.STORE_VIEW;
 
-				} else if (UserConfigurationActivity.this.radioButtonViewTypeAlphabetically.isChecked()) {
+				} else if (UserConfigurationActivity.this.radioButtonViewTypeAlphabetically
+						.isChecked()) {
 					viewType = ConfigurationConstants.ALPHABETICALLY_VIEW;
 				}
 
@@ -72,7 +74,8 @@ public class UserConfigurationActivity extends AbstractShoppinglistActivity {
 		this.buttonExportEmail.setOnClickListener(new OnClickListener() {
 
 			public void onClick(final View v) {
-				final Intent intentExportEmail = new Intent(UserConfigurationActivity.this.context, SendEmailActivity.class);
+				final Intent intentExportEmail = new Intent(UserConfigurationActivity.this.context,
+						SendEmailActivity.class);
 				UserConfigurationActivity.this.startActivityForResult(intentExportEmail, 0);
 			}
 
@@ -82,13 +85,14 @@ public class UserConfigurationActivity extends AbstractShoppinglistActivity {
 		this.buttonExportGoogle.setOnClickListener(new OnClickListener() {
 
 			public void onClick(final View v) {
-				final Intent intentOAuthGoogle = new Intent(UserConfigurationActivity.this.context, GoogleOAuthActivity.class);
+				final Intent intentOAuthGoogle = new Intent(UserConfigurationActivity.this.context,
+						GoogleOAuthActivity.class);
 				UserConfigurationActivity.this.startActivityForResult(intentOAuthGoogle, 0);
 
 			}
 		});
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(final MenuItem item) {
 		switch (item.getItemId()) {

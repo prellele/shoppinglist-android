@@ -44,27 +44,24 @@ public class ShowHistoryShoppinglist extends AbstractShoppinglistActivity {
 		this.setContentView(R.layout.history_shoppinglist);
 
 		// get the values from calling activity
-		this.clickedShoppinglistId = this.getIntent().getIntExtra(
-				DBConstants.COL_SHOPPINGLIST_ID, -1);
-		final String clickedShoppinglistCreatedTime = this.getIntent()
-				.getStringExtra(DBConstants.COL_SHOPPINGLIST_CREATED_TIME);
-		final String clickedShoppinglistFinishedTime = this.getIntent()
-				.getStringExtra(DBConstants.COL_SHOPPINGLIST_FINISHED_TIME);
+		this.clickedShoppinglistId = this.getIntent().getIntExtra(DBConstants.COL_SHOPPINGLIST_ID,
+				-1);
+		final String clickedShoppinglistCreatedTime = this.getIntent().getStringExtra(
+				DBConstants.COL_SHOPPINGLIST_CREATED_TIME);
+		final String clickedShoppinglistFinishedTime = this.getIntent().getStringExtra(
+				DBConstants.COL_SHOPPINGLIST_FINISHED_TIME);
 
 		// update title TextView with clickedShoppinglist dates
-		this.textViewTitle = (TextView) this
-				.findViewById(R.id.titleHistoryShoppinglist);
+		this.textViewTitle = (TextView) this.findViewById(R.id.titleHistoryShoppinglist);
 		this.textViewTitle.setText(clickedShoppinglistCreatedTime + " bis "
 				+ clickedShoppinglistFinishedTime);
 
-		this.historyList = this.datasource
-				.getHistoryByShoppinglistId(this.clickedShoppinglistId);
+		this.historyList = this.datasource.getHistoryByShoppinglistId(this.clickedShoppinglistId);
 
-		this.historyShoppinglistAdapter = new HistoryShoppinglistAdapter(
-				this.context, this.historyList);
+		this.historyShoppinglistAdapter = new HistoryShoppinglistAdapter(this.context,
+				this.historyList);
 
-		this.listViewHistory = (ListView) this
-				.findViewById(R.id.listViewHistoryShoppinglist);
+		this.listViewHistory = (ListView) this.findViewById(R.id.listViewHistoryShoppinglist);
 		this.listViewHistory.setAdapter(this.historyShoppinglistAdapter);
 
 	}
@@ -92,19 +89,16 @@ public class ShowHistoryShoppinglist extends AbstractShoppinglistActivity {
 			alertBox.setMessage("Sind Sie sich sicher, den komplette Verlauf unwiderruflich zu löschen?");
 			alertBox.setPositiveButton("Ja", new OnClickListener() {
 
-				public void onClick(final DialogInterface dialog,
-						final int which) {
+				public void onClick(final DialogInterface dialog, final int which) {
 					ShowHistoryShoppinglist.this.datasource.deleteHistory();
 
-					ShowHistoryShoppinglist.this.historyShoppinglistAdapter
-							.clear();
+					ShowHistoryShoppinglist.this.historyShoppinglistAdapter.clear();
 				}
 			});
 
 			alertBox.setNegativeButton("Nein", new OnClickListener() {
 
-				public void onClick(final DialogInterface dialog,
-						final int which) {
+				public void onClick(final DialogInterface dialog, final int which) {
 					// do nothing here
 				}
 			});
@@ -123,12 +117,10 @@ public class ShowHistoryShoppinglist extends AbstractShoppinglistActivity {
 	public void onResume() {
 		super.onResume();
 
-		this.historyList = this.datasource
-				.getHistoryByShoppinglistId(this.clickedShoppinglistId);
-		this.historyShoppinglistAdapter = new HistoryShoppinglistAdapter(
-				this.context, this.historyList);
-		this.listViewHistory = (ListView) this
-				.findViewById(R.id.listViewHistoryShoppinglist);
+		this.historyList = this.datasource.getHistoryByShoppinglistId(this.clickedShoppinglistId);
+		this.historyShoppinglistAdapter = new HistoryShoppinglistAdapter(this.context,
+				this.historyList);
+		this.listViewHistory = (ListView) this.findViewById(R.id.listViewHistoryShoppinglist);
 		this.listViewHistory.setAdapter(this.historyShoppinglistAdapter);
 	}
 }

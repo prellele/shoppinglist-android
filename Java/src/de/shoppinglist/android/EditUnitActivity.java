@@ -28,7 +28,8 @@ public class EditUnitActivity extends AbstractShoppinglistActivity {
 
 	private EditText editTextUnitName;
 
-	private List<Integer> editTextIds = new LinkedList<Integer>(Arrays.asList(R.id.editTextNameAddUnit));
+	private List<Integer> editTextIds = new LinkedList<Integer>(
+			Arrays.asList(R.id.editTextNameAddUnit));
 
 	private TextView textViewTitle;
 
@@ -51,7 +52,8 @@ public class EditUnitActivity extends AbstractShoppinglistActivity {
 
 		this.editTextUnitName = (EditText) this.findViewById(R.id.editTextNameAddUnit);
 		this.editTextUnitName.setText(selectedUnitName);
-		this.editTextUnitName.addTextChangedListener(super.getTextWatcher(R.id.editTextNameAddUnit));
+		this.editTextUnitName
+				.addTextChangedListener(super.getTextWatcher(R.id.editTextNameAddUnit));
 
 		this.buttonConfirmEdit = (Button) this.findViewById(R.id.buttonConfirmAddUnit);
 		this.buttonConfirmEdit.setText(R.string.button_text_save);
@@ -62,26 +64,29 @@ public class EditUnitActivity extends AbstractShoppinglistActivity {
 
 					// check whether there is an unit with this name already
 					final Unit alreadyExistingUnit = EditUnitActivity.this.datasource
-							.getUnitByName(EditUnitActivity.this.editTextUnitName.getText().toString());
+							.getUnitByName(EditUnitActivity.this.editTextUnitName.getText()
+									.toString());
 
 					if (alreadyExistingUnit == null) {
 
 						final Unit unitToUpdate = new Unit();
 						unitToUpdate.setId(selectedUnitId);
-						unitToUpdate.setName(EditUnitActivity.this.editTextUnitName.getText().toString());
+						unitToUpdate.setName(EditUnitActivity.this.editTextUnitName.getText()
+								.toString());
 
 						EditUnitActivity.this.datasource.updateUnit(unitToUpdate);
 						EditUnitActivity.this.finish();
 
 					} else {
 						Toast.makeText(EditUnitActivity.this.context,
-								EditUnitActivity.this.getString(R.string.msg_unit_already_exists), Toast.LENGTH_SHORT).show();
+								EditUnitActivity.this.getString(R.string.msg_unit_already_exists),
+								Toast.LENGTH_SHORT).show();
 					}
 				}
 			}
 		});
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(final MenuItem item) {
 		switch (item.getItemId()) {

@@ -5,7 +5,8 @@ import de.shoppinglist.android.constant.GlobalValues;
 
 public class ProcessColorHelper {
 
-	public static int getColorForProcess(final double countCheckedProducts, final double countProducts) {
+	public static int getColorForProcess(final double countCheckedProducts,
+			final double countProducts) {
 
 		final double processPercentage = (countCheckedProducts / countProducts) * 100;
 

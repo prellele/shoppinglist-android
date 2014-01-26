@@ -2,7 +2,7 @@
 <projectDescription>
 
     <name>
-Shoppinglist
+Shoppinglist
     </name>
 
     <comment>
@@ -16,7 +16,7 @@ Shoppinglist
         <buildCommand>
 
             <name>
-com.android.ide.eclipse.adt.ResourceManagerBuilder
+com.android.ide.eclipse.adt.ResourceManagerBuilder
             </name>
 
             <arguments>
@@ -26,7 +26,7 @@ com.android.ide.eclipse.adt.ResourceManagerBuilder
         <buildCommand>
 
             <name>
-com.android.ide.eclipse.adt.PreCompilerBuilder
+com.android.ide.eclipse.adt.PreCompilerBuilder
             </name>
 
             <arguments>
@@ -36,7 +36,7 @@ com.android.ide.eclipse.adt.PreCompilerBuilder
         <buildCommand>
 
             <name>
-org.eclipse.jdt.core.javabuilder
+org.eclipse.jdt.core.javabuilder
             </name>
 
             <arguments>
@@ -46,7 +46,7 @@ org.eclipse.jdt.core.javabuilder
         <buildCommand>
 
             <name>
-com.android.ide.eclipse.adt.ApkBuilder
+com.android.ide.eclipse.adt.ApkBuilder
             </name>
 
             <arguments>
@@ -57,11 +57,11 @@ com.android.ide.eclipse.adt.ApkBuilder
     <natures>
 
         <nature>
-com.android.ide.eclipse.adt.AndroidNature
+com.android.ide.eclipse.adt.AndroidNature
         </nature>
 
         <nature>
-org.eclipse.jdt.core.javanature
+org.eclipse.jdt.core.javanature
         </nature>
     </natures>
 

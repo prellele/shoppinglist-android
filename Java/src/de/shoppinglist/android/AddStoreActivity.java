@@ -26,7 +26,8 @@ public class AddStoreActivity extends AbstractShoppinglistActivity {
 
 	private EditText editTextStoreName;
 
-	private List<Integer> editTextIds = new LinkedList<Integer>(Arrays.asList(R.id.editTextNameAddStore));
+	private List<Integer> editTextIds = new LinkedList<Integer>(
+			Arrays.asList(R.id.editTextNameAddStore));
 
 	/** Called when the activity is first created. */
 	@Override
@@ -38,7 +39,8 @@ public class AddStoreActivity extends AbstractShoppinglistActivity {
 		this.setContentView(R.layout.add_or_edit_store);
 
 		this.editTextStoreName = (EditText) this.findViewById(R.id.editTextNameAddStore);
-		this.editTextStoreName.addTextChangedListener(super.getTextWatcher(R.id.editTextNameAddStore));
+		this.editTextStoreName.addTextChangedListener(super
+				.getTextWatcher(R.id.editTextNameAddStore));
 
 		this.buttonAddStore = (Button) this.findViewById(R.id.buttonConfirmAddStore);
 		this.buttonAddStore.setOnClickListener(new OnClickListener() {
@@ -48,22 +50,26 @@ public class AddStoreActivity extends AbstractShoppinglistActivity {
 
 					// check whether there is already a store with this name
 					final Store alreadyExistingStore = AddStoreActivity.this.datasource
-							.getStoreByName(AddStoreActivity.this.editTextStoreName.getText().toString());
+							.getStoreByName(AddStoreActivity.this.editTextStoreName.getText()
+									.toString());
 
 					if (alreadyExistingStore == null) {
 						// save new store, when there is no store with this name
-						AddStoreActivity.this.datasource.saveStore(AddStoreActivity.this.editTextStoreName.getText().toString());
+						AddStoreActivity.this.datasource
+								.saveStore(AddStoreActivity.this.editTextStoreName.getText()
+										.toString());
 						AddStoreActivity.this.finish();
 
 					} else {
 						Toast.makeText(AddStoreActivity.this.context,
-								AddStoreActivity.this.getString(R.string.msg_store_already_exists), Toast.LENGTH_SHORT).show();
+								AddStoreActivity.this.getString(R.string.msg_store_already_exists),
+								Toast.LENGTH_SHORT).show();
 					}
 				}
 			}
 		});
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(final MenuItem item) {
 		switch (item.getItemId()) {

@@ -28,7 +28,8 @@ public class EditFavoriteActivity extends AbstractShoppinglistActivity {
 
 	private EditText editTextFavoriteName;
 
-	private List<Integer> editTextIds = new LinkedList<Integer>(Arrays.asList(R.id.editTextNameAddFavoritelist));
+	private List<Integer> editTextIds = new LinkedList<Integer>(
+			Arrays.asList(R.id.editTextNameAddFavoritelist));
 
 	private TextView textViewTitle;
 
@@ -42,8 +43,10 @@ public class EditFavoriteActivity extends AbstractShoppinglistActivity {
 		this.setContentView(R.layout.add_or_edit_favorite);
 
 		// get values of calling activity
-		final int selectedFavoriteId = this.getIntent().getIntExtra(DBConstants.COL_FAVORITE_ID, -1);
-		final String selectedFavoriteName = this.getIntent().getStringExtra(DBConstants.COL_FAVORITE_NAME);
+		final int selectedFavoriteId = this.getIntent()
+				.getIntExtra(DBConstants.COL_FAVORITE_ID, -1);
+		final String selectedFavoriteName = this.getIntent().getStringExtra(
+				DBConstants.COL_FAVORITE_NAME);
 
 		// set the title to match the activity
 		this.textViewTitle = (TextView) this.findViewById(R.id.titleAddFavorite);
@@ -51,7 +54,8 @@ public class EditFavoriteActivity extends AbstractShoppinglistActivity {
 
 		this.editTextFavoriteName = (EditText) this.findViewById(R.id.editTextNameAddFavoritelist);
 		this.editTextFavoriteName.setText(selectedFavoriteName);
-		this.editTextFavoriteName.addTextChangedListener(super.getTextWatcher(R.id.editTextNameAddFavoritelist));
+		this.editTextFavoriteName.addTextChangedListener(super
+				.getTextWatcher(R.id.editTextNameAddFavoritelist));
 
 		this.buttonEditFavorite = (Button) this.findViewById(R.id.buttonConfirmAddFavoritelist);
 		this.buttonEditFavorite.setText(R.string.button_text_save);
@@ -64,27 +68,31 @@ public class EditFavoriteActivity extends AbstractShoppinglistActivity {
 					// check whether there is already a favoritelist with this
 					// name
 					final Favorite alreadyExistingFavorite = EditFavoriteActivity.this.datasource
-							.getFavoriteByName(EditFavoriteActivity.this.editTextFavoriteName.getText().toString());
+							.getFavoriteByName(EditFavoriteActivity.this.editTextFavoriteName
+									.getText().toString());
 
 					if (alreadyExistingFavorite == null) {
 
 						final Favorite favoriteToUpdate = new Favorite();
 						favoriteToUpdate.setId(selectedFavoriteId);
-						favoriteToUpdate.setName(EditFavoriteActivity.this.editTextFavoriteName.getText().toString());
+						favoriteToUpdate.setName(EditFavoriteActivity.this.editTextFavoriteName
+								.getText().toString());
 
 						EditFavoriteActivity.this.datasource.updateFavorite(favoriteToUpdate);
 						EditFavoriteActivity.this.finish();
 
 					} else {
-						Toast.makeText(EditFavoriteActivity.this.context,
-								EditFavoriteActivity.this.getString(R.string.msg_favorite_already_exists), Toast.LENGTH_SHORT)
-								.show();
+						Toast.makeText(
+								EditFavoriteActivity.this.context,
+								EditFavoriteActivity.this
+										.getString(R.string.msg_favorite_already_exists),
+								Toast.LENGTH_SHORT).show();
 					}
 				}
 			}
 		});
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(final MenuItem item) {
 		switch (item.getItemId()) {

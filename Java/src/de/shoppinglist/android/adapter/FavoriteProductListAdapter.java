@@ -17,7 +17,8 @@ public class FavoriteProductListAdapter extends ArrayAdapter<FavoriteProductMapp
 
 	private final List<FavoriteProductMapping> values;
 
-	public FavoriteProductListAdapter(final Context context, final List<FavoriteProductMapping> values) {
+	public FavoriteProductListAdapter(final Context context,
+			final List<FavoriteProductMapping> values) {
 		super(context, R.layout.list_row, values);
 		this.context = context;
 		this.values = values;
@@ -30,8 +31,9 @@ public class FavoriteProductListAdapter extends ArrayAdapter<FavoriteProductMapp
 		final FavoriteProductMapping favoriteProductMapping = this.values.get(position);
 
 		final String textToShow = favoriteProductMapping.getQuantity() + " "
-				+ favoriteProductMapping.getProduct().getUnit().getName() + " " + favoriteProductMapping.getProduct().getName()
-				+ " (" + favoriteProductMapping.getStore().getName() + ")";
+				+ favoriteProductMapping.getProduct().getUnit().getName() + " "
+				+ favoriteProductMapping.getProduct().getName() + " ("
+				+ favoriteProductMapping.getStore().getName() + ")";
 
 		textView.setText(textToShow);
 

@@ -119,7 +119,8 @@ public class DriveApiActivity extends AbstractShoppinglistActivity {
 			this.credentialStore = new SharedPreferencesCredentialStore(this.prefs);
 		}
 
-		this.editTextDocumentNameExport = (EditText) this.findViewById(R.id.editTextGoogleDriveExportFileName);
+		this.editTextDocumentNameExport = (EditText) this
+				.findViewById(R.id.editTextGoogleDriveExportFileName);
 		this.editTextDocumentNameExport.addTextChangedListener(super
 				.getTextWatcher(R.id.editTextGoogleDriveExportFileName));
 
@@ -127,11 +128,12 @@ public class DriveApiActivity extends AbstractShoppinglistActivity {
 		this.buttonExport.setOnClickListener(new OnClickListener() {
 
 			public void onClick(final View v) {
-				if (DriveApiActivity.super.setErrorOnEmptyEditTexts(DriveApiActivity.this.editTextIds)) {
+				if (DriveApiActivity.super
+						.setErrorOnEmptyEditTexts(DriveApiActivity.this.editTextIds)) {
 					DriveApiActivity.this.exportShoppinglistToDrive();
 					Toast.makeText(DriveApiActivity.this.context,
-							DriveApiActivity.this.getString(R.string.msg_google_export_successful), Toast.LENGTH_SHORT)
-							.show();
+							DriveApiActivity.this.getString(R.string.msg_google_export_successful),
+							Toast.LENGTH_SHORT).show();
 				}
 			}
 		});
@@ -173,7 +175,8 @@ public class DriveApiActivity extends AbstractShoppinglistActivity {
 				// prepare the file for export
 				final java.io.File fileContent = new java.io.File(this.fileName);
 
-				final FileContent mediaContent = new FileContent(GlobalValues.TEXT_PLAIN_MIMETYPE, fileContent);
+				final FileContent mediaContent = new FileContent(GlobalValues.TEXT_PLAIN_MIMETYPE,
+						fileContent);
 
 				final File file = new File();
 				file.setEditable(GlobalValues.YES_BOOL);
@@ -194,7 +197,8 @@ public class DriveApiActivity extends AbstractShoppinglistActivity {
 			}
 		} else {
 			Toast.makeText(DriveApiActivity.this.context,
-					this.getString(R.string.msg_google_export_empty_shoppinglist), Toast.LENGTH_SHORT).show();
+					this.getString(R.string.msg_google_export_empty_shoppinglist),
+					Toast.LENGTH_SHORT).show();
 		}
 	}
 
@@ -207,14 +211,16 @@ public class DriveApiActivity extends AbstractShoppinglistActivity {
 			final FileList fileList = request.execute();
 
 			// show the file-list-popup for user's choice.
-			final LayoutInflater inflater = (LayoutInflater) this.getBaseContext().getSystemService(
-					Context.LAYOUT_INFLATER_SERVICE);
+			final LayoutInflater inflater = (LayoutInflater) this.getBaseContext()
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			final View popupView = inflater.inflate(R.layout.popup_import_google_file, null);
-			this.popupWindow = new PopupWindow(popupView, android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+			this.popupWindow = new PopupWindow(popupView,
+					android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
 					android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
 			this.popupWindow.setBackgroundDrawable(new BitmapDrawable());
 
-			final Button buttonAbortImport = (Button) popupView.findViewById(R.id.buttonDismissGoogleImportPopup);
+			final Button buttonAbortImport = (Button) popupView
+					.findViewById(R.id.buttonDismissGoogleImportPopup);
 			buttonAbortImport.setOnClickListener(new OnClickListener() {
 
 				public void onClick(final View v) {
@@ -222,14 +228,16 @@ public class DriveApiActivity extends AbstractShoppinglistActivity {
 				}
 			});
 
-			final ListView listViewDriveFiles = (ListView) popupView.findViewById(R.id.listViewGoogleDriveFilesImport);
-			final GoogleDriveFileAdapter importFileAdapter = new GoogleDriveFileAdapter(this.context,
-					fileList.getItems());
+			final ListView listViewDriveFiles = (ListView) popupView
+					.findViewById(R.id.listViewGoogleDriveFilesImport);
+			final GoogleDriveFileAdapter importFileAdapter = new GoogleDriveFileAdapter(
+					this.context, fileList.getItems());
 			listViewDriveFiles.setAdapter(importFileAdapter);
 
 			listViewDriveFiles.setOnItemClickListener(new OnItemClickListener() {
 
-				public void onItemClick(final AdapterView<?> arg0, final View view, final int position, final long id) {
+				public void onItemClick(final AdapterView<?> arg0, final View view,
+						final int position, final long id) {
 
 					final File selectedFile = importFileAdapter.getItem(position);
 					DriveApiActivity.this.fileTitle = selectedFile.getTitle();
@@ -241,8 +249,8 @@ public class DriveApiActivity extends AbstractShoppinglistActivity {
 						if ((selectedFile != null) && (selectedFile.getDownloadUrl() != null)) {
 
 							final GenericUrl url = new GenericUrl(selectedFile.getDownloadUrl());
-							final HttpRequest request = DriveApiActivity.this.service.getRequestFactory()
-									.buildGetRequest(url);
+							final HttpRequest request = DriveApiActivity.this.service
+									.getRequestFactory().buildGetRequest(url);
 							final HttpHeaders headers = new HttpHeaders();
 							headers.setAccept(GlobalValues.TEXT_PLAIN_MIMETYPE);
 							headers.set("Accept-Charset", "ISO-8859-1");
@@ -258,7 +266,8 @@ public class DriveApiActivity extends AbstractShoppinglistActivity {
 								fileStringBuffer.append((char) readChar);
 							}
 
-							final String[] shoppinglistProductMappings = fileStringBuffer.toString().split("\\n");
+							final String[] shoppinglistProductMappings = fileStringBuffer
+									.toString().split("\\n");
 
 							boolean isShoppinglistFile = true;
 							for (final String mapping : shoppinglistProductMappings) {
@@ -278,17 +287,20 @@ public class DriveApiActivity extends AbstractShoppinglistActivity {
 									// get quantity
 									quantity = mapping.substring(0, mapping.indexOf(" "));
 									// cut the quantity out of this string
-									mapping = mapping.substring(quantity.length() + 1, mapping.length());
+									mapping = mapping.substring(quantity.length() + 1,
+											mapping.length());
 
 									// get unit
 									unitName = mapping.substring(0, mapping.indexOf(" "));
 									// cut the unit out of this string
-									mapping = mapping.substring(unitName.length() + 1, mapping.length());
-								
+									mapping = mapping.substring(unitName.length() + 1,
+											mapping.length());
+
 									// get productName
 									productName = mapping.substring(0, mapping.indexOf("@") - 1);
 									// cut the product out of this string
-									mapping = mapping.substring(productName.length() + 1, mapping.length());
+									mapping = mapping.substring(productName.length() + 1,
+											mapping.length());
 
 									// get storeName
 									storeName = mapping.substring(mapping.indexOf("@") + 1);
@@ -298,56 +310,70 @@ public class DriveApiActivity extends AbstractShoppinglistActivity {
 									// must be added / saved to the db and
 									// which
 									// ones could only be updated.
-									Unit unit = DriveApiActivity.this.datasource.getUnitByName(unitName);
+									Unit unit = DriveApiActivity.this.datasource
+											.getUnitByName(unitName);
 									if (unit == null) {
 										DriveApiActivity.this.datasource.saveUnit(unitName);
-										unit = DriveApiActivity.this.datasource.getUnitByName(unitName);
+										unit = DriveApiActivity.this.datasource
+												.getUnitByName(unitName);
 									}
 
-									Product product = DriveApiActivity.this.datasource.getProductByNameAndUnit(
-											productName, unit.getId());
+									Product product = DriveApiActivity.this.datasource
+											.getProductByNameAndUnit(productName, unit.getId());
 									if (product == null) {
-										DriveApiActivity.this.datasource.saveProduct(productName, unit.getId());
-										product = DriveApiActivity.this.datasource.getProductByNameAndUnit(productName,
+										DriveApiActivity.this.datasource.saveProduct(productName,
 												unit.getId());
+										product = DriveApiActivity.this.datasource
+												.getProductByNameAndUnit(productName, unit.getId());
 									}
 
-									Store store = DriveApiActivity.this.datasource.getStoreByName(storeName);
+									Store store = DriveApiActivity.this.datasource
+											.getStoreByName(storeName);
 									if (store == null) {
 										DriveApiActivity.this.datasource.saveStore(storeName);
-										store = DriveApiActivity.this.datasource.getStoreByName(storeName);
+										store = DriveApiActivity.this.datasource
+												.getStoreByName(storeName);
 									}
 
 									final ShoppinglistProductMapping alreadyExistingMapping = DriveApiActivity.this.datasource
-											.checkWhetherShoppinglistProductMappingExists(store.getId(),
-													product.getId());
+											.checkWhetherShoppinglistProductMappingExists(
+													store.getId(), product.getId());
 									if (alreadyExistingMapping != null) {
 										// JA: update quantity
-										final double quantityToUpdate = Double.valueOf(alreadyExistingMapping
-												.getQuantity()) + Double.valueOf(quantity);
+										final double quantityToUpdate = Double
+												.valueOf(alreadyExistingMapping.getQuantity())
+												+ Double.valueOf(quantity);
 										DriveApiActivity.this.datasource.updateShoppinglistProductMapping(
-												alreadyExistingMapping.getId(), alreadyExistingMapping.getStore()
-														.getId(), alreadyExistingMapping.getProduct().getId(), String
-														.valueOf(quantityToUpdate));
+												alreadyExistingMapping.getId(),
+												alreadyExistingMapping.getStore().getId(),
+												alreadyExistingMapping.getProduct().getId(),
+												String.valueOf(quantityToUpdate));
 									} else {
 										// NEIN: insert new / save
-										DriveApiActivity.this.datasource.saveShoppingListProductMapping(store.getId(),
-												product.getId(), quantity, GlobalValues.NO);
+										DriveApiActivity.this.datasource
+												.saveShoppingListProductMapping(store.getId(),
+														product.getId(), quantity, GlobalValues.NO);
 									}
 
-									Toast.makeText(DriveApiActivity.this.context,
-											DriveApiActivity.this.getString(R.string.msg_google_import_successful),
+									Toast.makeText(
+											DriveApiActivity.this.context,
+											DriveApiActivity.this
+													.getString(R.string.msg_google_import_successful),
 											Toast.LENGTH_SHORT).show();
 								}
 							} else {
-								Toast.makeText(DriveApiActivity.this.context,
-										DriveApiActivity.this.getString(R.string.msg_google_import_not_compatible),
+								Toast.makeText(
+										DriveApiActivity.this.context,
+										DriveApiActivity.this
+												.getString(R.string.msg_google_import_not_compatible),
 										Toast.LENGTH_SHORT).show();
 							}
 
 						} else {
-							Toast.makeText(DriveApiActivity.this.context,
-									DriveApiActivity.this.getString(R.string.msg_google_import_not_compatible),
+							Toast.makeText(
+									DriveApiActivity.this.context,
+									DriveApiActivity.this
+											.getString(R.string.msg_google_import_not_compatible),
 									Toast.LENGTH_SHORT).show();
 						}
 
@@ -359,8 +385,9 @@ public class DriveApiActivity extends AbstractShoppinglistActivity {
 			});
 
 			this.popupWindow.setFocusable(GlobalValues.YES_BOOL);
-			this.popupWindow.showAtLocation(this.findViewById(R.id.buttonConfirmImportFromGoogleDrive), Gravity.CENTER,
-					0, 0);
+			this.popupWindow.showAtLocation(
+					this.findViewById(R.id.buttonConfirmImportFromGoogleDrive), Gravity.CENTER, 0,
+					0);
 
 		} catch (final IOException e) {
 			e.printStackTrace();

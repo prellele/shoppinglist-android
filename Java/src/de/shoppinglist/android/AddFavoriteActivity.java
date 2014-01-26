@@ -26,7 +26,8 @@ public class AddFavoriteActivity extends AbstractShoppinglistActivity {
 
 	private EditText editTextFavoriteName;
 
-	private List<Integer> editTextIds = new LinkedList<Integer>(Arrays.asList(R.id.editTextNameAddFavoritelist));
+	private List<Integer> editTextIds = new LinkedList<Integer>(
+			Arrays.asList(R.id.editTextNameAddFavoritelist));
 
 	/** Called when the activity is first created. */
 	@Override
@@ -38,7 +39,8 @@ public class AddFavoriteActivity extends AbstractShoppinglistActivity {
 		this.setContentView(R.layout.add_or_edit_favorite);
 
 		this.editTextFavoriteName = (EditText) this.findViewById(R.id.editTextNameAddFavoritelist);
-		this.editTextFavoriteName.addTextChangedListener(super.getTextWatcher(R.id.editTextNameAddFavoritelist));
+		this.editTextFavoriteName.addTextChangedListener(super
+				.getTextWatcher(R.id.editTextNameAddFavoritelist));
 
 		this.buttonAddFavorite = (Button) this.findViewById(R.id.buttonConfirmAddFavoritelist);
 		this.buttonAddFavorite.setOnClickListener(new OnClickListener() {
@@ -48,25 +50,29 @@ public class AddFavoriteActivity extends AbstractShoppinglistActivity {
 					// check whether there is already a favoritelist with this
 					// name
 					final Favorite alreadyExistingFavorite = AddFavoriteActivity.this.datasource
-							.getFavoriteByName(AddFavoriteActivity.this.editTextFavoriteName.getText().toString());
+							.getFavoriteByName(AddFavoriteActivity.this.editTextFavoriteName
+									.getText().toString());
 					if (alreadyExistingFavorite == null) {
 						// save new favorite, when there is no favorite with
 						// this
 						// name
-						AddFavoriteActivity.this.datasource.saveFavorite(AddFavoriteActivity.this.editTextFavoriteName.getText()
-								.toString());
+						AddFavoriteActivity.this.datasource
+								.saveFavorite(AddFavoriteActivity.this.editTextFavoriteName
+										.getText().toString());
 						AddFavoriteActivity.this.finish();
 
 					} else {
-						Toast.makeText(AddFavoriteActivity.this.context,
-								AddFavoriteActivity.this.getString(R.string.msg_favorite_already_exists), Toast.LENGTH_SHORT)
-								.show();
+						Toast.makeText(
+								AddFavoriteActivity.this.context,
+								AddFavoriteActivity.this
+										.getString(R.string.msg_favorite_already_exists),
+								Toast.LENGTH_SHORT).show();
 					}
 				}
 			}
 		});
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(final MenuItem item) {
 		switch (item.getItemId()) {

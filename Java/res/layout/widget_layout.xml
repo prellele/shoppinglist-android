@@ -3,20 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:scrollbarAlwaysDrawVerticalTrack="true"    
-    android:padding="@dimen/widget_padding_layout_vertical" 
-	android:scaleType="matrix" >
-	
+    android:padding="@dimen/widget_padding_layout_vertical"
+    android:scaleType="matrix"
+    android:scrollbarAlwaysDrawVerticalTrack="true" >
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_size_height"
         android:background="@drawable/linien_bg"
-        android:text="@string/widget_title"
-        android:textColor="@color/widget_title_color"
+        android:gravity="center"
         android:shadowColor="#DEDEDE"
         android:shadowDx="1"
-    	android:shadowDy="1"
-    	android:gravity="center" 
+        android:shadowDy="1"
+        android:text="@string/widget_title"
+        android:textColor="@color/widget_title_color"
         android:textSize="@dimen/text_size_title" >
     </TextView>
 

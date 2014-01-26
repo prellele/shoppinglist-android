@@ -65,7 +65,8 @@ public class ShoppinglistActivity extends AbstractShoppinglistActivity {
 		// get the mappings (storeId = -1 because there's no store specified)
 		this.shoppinglistProductMappingsToShow = this.datasource.getProductsOnShoppingList(-1);
 
-		this.shoppinglistMappingAdapter = new ShoppinglistProductMappingAdapter(this, this.shoppinglistProductMappingsToShow);
+		this.shoppinglistMappingAdapter = new ShoppinglistProductMappingAdapter(this,
+				this.shoppinglistProductMappingsToShow);
 
 		// show the process
 		this.setProcessTextInAlphabeticallyView();
@@ -73,32 +74,39 @@ public class ShoppinglistActivity extends AbstractShoppinglistActivity {
 		// show historybutton?
 		this.setVisibilityOfHistoryButton();
 
-		this.listAlphabetically = (ListView) this.findViewById(R.id.listShoppinglistProductMappingsAlphabetically);
+		this.listAlphabetically = (ListView) this
+				.findViewById(R.id.listShoppinglistProductMappingsAlphabetically);
 		this.listAlphabetically.setAdapter(this.shoppinglistMappingAdapter);
 
 		// handle clicks on addToHistory button
-		this.buttonAddToHistoryAlphabeticallyView = (Button) this.findViewById(R.id.buttonAddToHistoryAlphabetOverview);
+		this.buttonAddToHistoryAlphabeticallyView = (Button) this
+				.findViewById(R.id.buttonAddToHistoryAlphabetOverview);
 		this.buttonAddToHistoryAlphabeticallyView.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(final View v) {
-				final AlertDialog.Builder alertBox = new AlertDialog.Builder(ShoppinglistActivity.this.context);
-				alertBox.setMessage(ShoppinglistActivity.this.getString(R.string.msg_really_add_shoppinglist_to_history));
-				alertBox.setPositiveButton(ShoppinglistActivity.this.getString(R.string.msg_yes), new OnClickListener() {
+				final AlertDialog.Builder alertBox = new AlertDialog.Builder(
+						ShoppinglistActivity.this.context);
+				alertBox.setMessage(ShoppinglistActivity.this
+						.getString(R.string.msg_really_add_shoppinglist_to_history));
+				alertBox.setPositiveButton(ShoppinglistActivity.this.getString(R.string.msg_yes),
+						new OnClickListener() {
 
-					public void onClick(final DialogInterface dialog, final int which) {
-						ShoppinglistActivity.this.datasource.addAllToHistory();
-						ShoppinglistActivity.this.datasource.deleteAllShoppinglistProductMappings();
-						ShoppinglistActivity.this.datasource.createNewShoppinglist();
-						ShoppinglistActivity.this.refreshLayout();
-					}
-				});
+							public void onClick(final DialogInterface dialog, final int which) {
+								ShoppinglistActivity.this.datasource.addAllToHistory();
+								ShoppinglistActivity.this.datasource
+										.deleteAllShoppinglistProductMappings();
+								ShoppinglistActivity.this.datasource.createNewShoppinglist();
+								ShoppinglistActivity.this.refreshLayout();
+							}
+						});
 
-				alertBox.setNegativeButton(ShoppinglistActivity.this.getString(R.string.msg_no), new OnClickListener() {
+				alertBox.setNegativeButton(ShoppinglistActivity.this.getString(R.string.msg_no),
+						new OnClickListener() {
 
-					public void onClick(final DialogInterface dialog, final int which) {
-						// do nothing here
-					}
-				});
+							public void onClick(final DialogInterface dialog, final int which) {
+								// do nothing here
+							}
+						});
 
 				alertBox.show();
 			}
@@ -108,7 +116,8 @@ public class ShoppinglistActivity extends AbstractShoppinglistActivity {
 		// handle long clicks on the list items
 		this.listAlphabetically.setOnItemLongClickListener(new OnItemLongClickListener() {
 
-			public boolean onItemLongClick(final AdapterView<?> arg0, final View v, final int position, final long id) {
+			public boolean onItemLongClick(final AdapterView<?> arg0, final View v,
+					final int position, final long id) {
 				final PopupMenu popup = new PopupMenu(ShoppinglistActivity.this.context, v);
 				final MenuInflater inflater = popup.getMenuInflater();
 				inflater.inflate(R.menu.popupmenu_products_overview, popup.getMenu());
@@ -127,17 +136,22 @@ public class ShoppinglistActivity extends AbstractShoppinglistActivity {
 						case R.id.popupEditProduct:
 
 							// switch to the addProductActivity
-							final Intent intent = new Intent(ShoppinglistActivity.this.context, EditProductActivity.class);
+							final Intent intent = new Intent(ShoppinglistActivity.this.context,
+									EditProductActivity.class);
 
 							// put the values of the mapping in the
 							// intent, so they can used by the other
 							// activity
-							intent.putExtra(DBConstants.COL_SHOPPINGLIST_PRODUCT_MAPPING_ID, shoppinglistProductMapping.getId());
+							intent.putExtra(DBConstants.COL_SHOPPINGLIST_PRODUCT_MAPPING_ID,
+									shoppinglistProductMapping.getId());
 							intent.putExtra(DBConstants.COL_SHOPPINGLIST_PRODUCT_MAPPING_QUANTITY,
 									shoppinglistProductMapping.getQuantity());
-							intent.putExtra(DBConstants.COL_UNIT_ID, shoppinglistProductMapping.getProduct().getUnit().getId());
-							intent.putExtra(DBConstants.COL_PRODUCT_NAME, shoppinglistProductMapping.getProduct().getName());
-							intent.putExtra(DBConstants.COL_STORE_ID, shoppinglistProductMapping.getStore().getId());
+							intent.putExtra(DBConstants.COL_UNIT_ID, shoppinglistProductMapping
+									.getProduct().getUnit().getId());
+							intent.putExtra(DBConstants.COL_PRODUCT_NAME,
+									shoppinglistProductMapping.getProduct().getName());
+							intent.putExtra(DBConstants.COL_STORE_ID, shoppinglistProductMapping
+									.getStore().getId());
 
 							ShoppinglistActivity.this.startActivityForResult(intent, 0);
 
@@ -149,10 +163,13 @@ public class ShoppinglistActivity extends AbstractShoppinglistActivity {
 							// buttonDeleteProduct - Popup (longClick)
 						case R.id.popupDeleteProduct:
 							// delete from mapping
-							shoppinglistProductMapping = ShoppinglistActivity.this.shoppinglistMappingAdapter.getItem(position);
-							ShoppinglistActivity.this.datasource.deleteShoppinglistProductMapping(shoppinglistProductMapping
-									.getId());
-							ShoppinglistActivity.this.shoppinglistMappingAdapter.remove(shoppinglistProductMapping);
+							shoppinglistProductMapping = ShoppinglistActivity.this.shoppinglistMappingAdapter
+									.getItem(position);
+							ShoppinglistActivity.this.datasource
+									.deleteShoppinglistProductMapping(shoppinglistProductMapping
+											.getId());
+							ShoppinglistActivity.this.shoppinglistMappingAdapter
+									.remove(shoppinglistProductMapping);
 
 							// update the process
 							ShoppinglistActivity.this.setProcessTextInAlphabeticallyView();
@@ -176,7 +193,8 @@ public class ShoppinglistActivity extends AbstractShoppinglistActivity {
 		// handle "normal" clicks on the list items
 		this.listAlphabetically.setOnItemClickListener(new OnItemClickListener() {
 
-			public void onItemClick(final AdapterView<?> arg0, final View v, final int position, final long id) {
+			public void onItemClick(final AdapterView<?> arg0, final View v, final int position,
+					final long id) {
 
 				final ShoppinglistProductMapping clickedMapping = ShoppinglistActivity.this.shoppinglistMappingAdapter
 						.getItem(position);
@@ -184,15 +202,17 @@ public class ShoppinglistActivity extends AbstractShoppinglistActivity {
 				if (clickedMapping.isChecked() == GlobalValues.NO) {
 
 					ShoppinglistActivity.this.shoppinglistProductMappingsToShow.get(
-							ShoppinglistActivity.this.shoppinglistProductMappingsToShow.indexOf(clickedMapping)).setChecked(
-							GlobalValues.YES);
-					ShoppinglistActivity.this.datasource.markShoppinglistProductMappingAsChecked(clickedMapping.getId());
+							ShoppinglistActivity.this.shoppinglistProductMappingsToShow
+									.indexOf(clickedMapping)).setChecked(GlobalValues.YES);
+					ShoppinglistActivity.this.datasource
+							.markShoppinglistProductMappingAsChecked(clickedMapping.getId());
 				} else if (clickedMapping.isChecked() == GlobalValues.YES) {
 
 					ShoppinglistActivity.this.shoppinglistProductMappingsToShow.get(
-							ShoppinglistActivity.this.shoppinglistProductMappingsToShow.indexOf(clickedMapping)).setChecked(
-							GlobalValues.NO);
-					ShoppinglistActivity.this.datasource.markShoppinglistProductMappingAsUnchecked(clickedMapping.getId());
+							ShoppinglistActivity.this.shoppinglistProductMappingsToShow
+									.indexOf(clickedMapping)).setChecked(GlobalValues.NO);
+					ShoppinglistActivity.this.datasource
+							.markShoppinglistProductMappingAsUnchecked(clickedMapping.getId());
 				}
 
 				ShoppinglistActivity.this.shoppinglistMappingAdapter.notifyDataSetChanged();
@@ -225,28 +245,34 @@ public class ShoppinglistActivity extends AbstractShoppinglistActivity {
 		this.setVisibilityOfHistoryButton();
 
 		// handle clicks on addToHistory button
-		this.buttonAddToHistoryStoreView = (Button) this.findViewById(R.id.buttonAddToHistoryStoreOverview);
+		this.buttonAddToHistoryStoreView = (Button) this
+				.findViewById(R.id.buttonAddToHistoryStoreOverview);
 		this.buttonAddToHistoryStoreView.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(final View v) {
-				final AlertDialog.Builder alertBox = new AlertDialog.Builder(ShoppinglistActivity.this.context);
-				alertBox.setMessage(ShoppinglistActivity.this.getString(R.string.msg_really_add_shoppinglist_to_history));
-				alertBox.setPositiveButton(ShoppinglistActivity.this.getString(R.string.msg_yes), new OnClickListener() {
+				final AlertDialog.Builder alertBox = new AlertDialog.Builder(
+						ShoppinglistActivity.this.context);
+				alertBox.setMessage(ShoppinglistActivity.this
+						.getString(R.string.msg_really_add_shoppinglist_to_history));
+				alertBox.setPositiveButton(ShoppinglistActivity.this.getString(R.string.msg_yes),
+						new OnClickListener() {
 
-					public void onClick(final DialogInterface dialog, final int which) {
-						ShoppinglistActivity.this.datasource.addAllToHistory();
-						ShoppinglistActivity.this.datasource.deleteAllShoppinglistProductMappings();
-						ShoppinglistActivity.this.datasource.createNewShoppinglist();
-						ShoppinglistActivity.this.refreshLayout();
-					}
-				});
+							public void onClick(final DialogInterface dialog, final int which) {
+								ShoppinglistActivity.this.datasource.addAllToHistory();
+								ShoppinglistActivity.this.datasource
+										.deleteAllShoppinglistProductMappings();
+								ShoppinglistActivity.this.datasource.createNewShoppinglist();
+								ShoppinglistActivity.this.refreshLayout();
+							}
+						});
 
-				alertBox.setNegativeButton(ShoppinglistActivity.this.getString(R.string.msg_no), new OnClickListener() {
+				alertBox.setNegativeButton(ShoppinglistActivity.this.getString(R.string.msg_no),
+						new OnClickListener() {
 
-					public void onClick(final DialogInterface dialog, final int which) {
-						// do nothing here
-					}
-				});
+							public void onClick(final DialogInterface dialog, final int which) {
+								// do nothing here
+							}
+						});
 
 				alertBox.show();
 			}
@@ -256,7 +282,8 @@ public class ShoppinglistActivity extends AbstractShoppinglistActivity {
 		// handle long clicks on the list items
 		this.listStore.setOnItemLongClickListener(new OnItemLongClickListener() {
 
-			public boolean onItemLongClick(final AdapterView<?> arg0, final View v, final int position, final long id) {
+			public boolean onItemLongClick(final AdapterView<?> arg0, final View v,
+					final int position, final long id) {
 
 				// show popup menu
 				final PopupMenu popup = new PopupMenu(ShoppinglistActivity.this.context, v);
@@ -272,9 +299,12 @@ public class ShoppinglistActivity extends AbstractShoppinglistActivity {
 						switch (item.getItemId()) {
 						case R.id.popupDeleteStoreEntries:
 							// delete from mapping
-							final Store storeToDeleteProductsFrom = ShoppinglistActivity.this.storeListAdapter.getItem(position);
-							ShoppinglistActivity.this.datasource.deleteProductsFromStoreList(storeToDeleteProductsFrom.getId());
-							ShoppinglistActivity.this.storeListAdapter.remove(storeToDeleteProductsFrom);
+							final Store storeToDeleteProductsFrom = ShoppinglistActivity.this.storeListAdapter
+									.getItem(position);
+							ShoppinglistActivity.this.datasource
+									.deleteProductsFromStoreList(storeToDeleteProductsFrom.getId());
+							ShoppinglistActivity.this.storeListAdapter
+									.remove(storeToDeleteProductsFrom);
 
 							return true;
 						default:
@@ -292,9 +322,11 @@ public class ShoppinglistActivity extends AbstractShoppinglistActivity {
 		// handle "normal" clicks on the list items
 		this.listStore.setOnItemClickListener(new OnItemClickListener() {
 
-			public void onItemClick(final AdapterView<?> arg0, final View v, final int position, final long id) {
+			public void onItemClick(final AdapterView<?> arg0, final View v, final int position,
+					final long id) {
 
-				final Store clickedStore = ShoppinglistActivity.this.storeListAdapter.getItem(position);
+				final Store clickedStore = ShoppinglistActivity.this.storeListAdapter
+						.getItem(position);
 
 				// call another Activity to show the products of the clicked
 				// store
@@ -439,10 +471,13 @@ public class ShoppinglistActivity extends AbstractShoppinglistActivity {
 			}
 		}
 
-		final int colorToShow = ProcessColorHelper.getColorForProcess(checkedMappingsCount, allMappingsCount);
+		final int colorToShow = ProcessColorHelper.getColorForProcess(checkedMappingsCount,
+				allMappingsCount);
 
-		this.labelProcessAlphabetically = (TextView) this.findViewById(R.id.labelAlphabeticallyOverviewStatus);
-		this.labelProcessAlphabetically.setText("( " + checkedMappingsCount + " / " + allMappingsCount + " )");
+		this.labelProcessAlphabetically = (TextView) this
+				.findViewById(R.id.labelAlphabeticallyOverviewStatus);
+		this.labelProcessAlphabetically.setText("( " + checkedMappingsCount + " / "
+				+ allMappingsCount + " )");
 		this.labelProcessAlphabetically.setTextColor(colorToShow);
 	}
 
@@ -468,7 +503,8 @@ public class ShoppinglistActivity extends AbstractShoppinglistActivity {
 				checkedMappingsCount = checkedMappingsCount + store.getAlreadyCheckedProducts();
 			}
 
-			this.buttonAddToHistoryStoreView = (Button) this.findViewById(R.id.buttonAddToHistoryStoreOverview);
+			this.buttonAddToHistoryStoreView = (Button) this
+					.findViewById(R.id.buttonAddToHistoryStoreOverview);
 
 			if ((allMappingsCount > 0) && (checkedMappingsCount == allMappingsCount)) {
 				this.buttonAddToHistoryStoreView.setVisibility(View.VISIBLE);
@@ -484,7 +520,8 @@ public class ShoppinglistActivity extends AbstractShoppinglistActivity {
 				}
 			}
 
-			this.buttonAddToHistoryAlphabeticallyView = (Button) this.findViewById(R.id.buttonAddToHistoryAlphabetOverview);
+			this.buttonAddToHistoryAlphabeticallyView = (Button) this
+					.findViewById(R.id.buttonAddToHistoryAlphabetOverview);
 
 			if ((allMappingsCount > 0) && (checkedMappingsCount == allMappingsCount)) {
 				this.buttonAddToHistoryAlphabeticallyView.setVisibility(View.VISIBLE);

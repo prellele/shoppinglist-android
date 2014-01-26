@@ -52,14 +52,13 @@ public class ManageFavoritesActivity extends AbstractShoppinglistActivity {
 
 		this.favoriteListAdapter = new FavoriteAdapter(this, this.allFavorites);
 
-		this.listFavorites = (ListView) this
-				.findViewById(R.id.listViewManageFavorites);
+		this.listFavorites = (ListView) this.findViewById(R.id.listViewManageFavorites);
 		this.listFavorites.setAdapter(this.favoriteListAdapter);
 
 		this.listFavorites.setOnItemClickListener(new OnItemClickListener() {
 
-			public void onItemClick(final AdapterView<?> arg0, final View v,
-					final int position, final long id) {
+			public void onItemClick(final AdapterView<?> arg0, final View v, final int position,
+					final long id) {
 
 				final Favorite selectedFavorite = ManageFavoritesActivity.this.favoriteListAdapter
 						.getItem(position);
@@ -70,173 +69,142 @@ public class ManageFavoritesActivity extends AbstractShoppinglistActivity {
 						ManageFavoritesActivity.this.getApplicationContext(),
 						EditFavoriteProductListActivity.class);
 
-				intentEditFavoriteProductList.putExtra(
-						DBConstants.COL_FAVORITE_ID, selectedFavorite.getId());
-				intentEditFavoriteProductList.putExtra(
-						DBConstants.COL_FAVORITE_NAME,
+				intentEditFavoriteProductList.putExtra(DBConstants.COL_FAVORITE_ID,
+						selectedFavorite.getId());
+				intentEditFavoriteProductList.putExtra(DBConstants.COL_FAVORITE_NAME,
 						selectedFavorite.getName());
 
-				ManageFavoritesActivity.this.startActivityForResult(
-						intentEditFavoriteProductList, 0);
+				ManageFavoritesActivity.this.startActivityForResult(intentEditFavoriteProductList,
+						0);
 			}
 
 		});
 
-		this.listFavorites
-				.setOnItemLongClickListener(new OnItemLongClickListener() {
+		this.listFavorites.setOnItemLongClickListener(new OnItemLongClickListener() {
 
-					public boolean onItemLongClick(final AdapterView<?> arg0,
-							final View v, final int position, final long id) {
-						// show popup menu
-						final PopupMenu popup = new PopupMenu(
-								ManageFavoritesActivity.this
-										.getApplicationContext(), v);
-						final MenuInflater inflater = popup.getMenuInflater();
-						inflater.inflate(R.menu.popupmenu_manage_favorites,
-								popup.getMenu());
-						popup.show();
+			public boolean onItemLongClick(final AdapterView<?> arg0, final View v,
+					final int position, final long id) {
+				// show popup menu
+				final PopupMenu popup = new PopupMenu(ManageFavoritesActivity.this
+						.getApplicationContext(), v);
+				final MenuInflater inflater = popup.getMenuInflater();
+				inflater.inflate(R.menu.popupmenu_manage_favorites, popup.getMenu());
+				popup.show();
 
-						// handle clicks on the popup-buttons
-						popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+				// handle clicks on the popup-buttons
+				popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {
 
-							public boolean onMenuItemClick(final MenuItem item) {
+					public boolean onMenuItemClick(final MenuItem item) {
 
-								final Favorite selectedFavorite = ManageFavoritesActivity.this.favoriteListAdapter
-										.getItem(position);
+						final Favorite selectedFavorite = ManageFavoritesActivity.this.favoriteListAdapter
+								.getItem(position);
 
-								switch (item.getItemId()) {
+						switch (item.getItemId()) {
 
-								case R.id.popupAddFavoritelistToShoppinglist:
-									// add favoriteProductMappings to
-									// shoppinglistProductMappings
+						case R.id.popupAddFavoritelistToShoppinglist:
+							// add favoriteProductMappings to
+							// shoppinglistProductMappings
 
-									final List<FavoriteProductMapping> favoriteProductMappings = ManageFavoritesActivity.super
-											.getDatasource()
-											.getFavoriteProductMappingsByFavoriteId(
-													selectedFavorite.getId());
-
-									// for each favoriteProductMapping check
-									// whether there is already an existing
-									// shoppinglistProductMapping
-									for (final FavoriteProductMapping favoriteProductMapping : favoriteProductMappings) {
-										final ShoppinglistProductMapping shoppinglistProductMapping = ManageFavoritesActivity.super
-												.getDatasource()
-												.checkWhetherShoppinglistProductMappingExists(
-														favoriteProductMapping
-																.getStore()
-																.getId(),
-														favoriteProductMapping
-																.getProduct()
-																.getId());
-
-										if (shoppinglistProductMapping != null) {
-											// update the quantity
-											final Double quantityToUpdate = (Double
-													.valueOf(favoriteProductMapping
-															.getQuantity()) + (Double
-													.valueOf(shoppinglistProductMapping
-															.getQuantity())));
-											ManageFavoritesActivity.this.datasource
-													.updateShoppinglistProductMapping(
-															shoppinglistProductMapping
-																	.getId(),
-															shoppinglistProductMapping
-																	.getStore()
-																	.getId(),
-															shoppinglistProductMapping
-																	.getProduct()
-																	.getId(),
-															String.valueOf(quantityToUpdate));
-
-										} else {
-											// insert new mapping
-											ManageFavoritesActivity.this.datasource
-													.saveShoppingListProductMapping(
-															favoriteProductMapping
-																	.getStore()
-																	.getId(),
-															favoriteProductMapping
-																	.getProduct()
-																	.getId(),
-															favoriteProductMapping
-																	.getQuantity(),
-															GlobalValues.NO);
-
-										}
-									}
-
-									return true;
-
-								case R.id.popupEditFavoriteName:
-									// switch to activity EditFavoriteActivity
-									final Intent intentEditFavoriteName = new Intent(
-											ManageFavoritesActivity.this
-													.getApplicationContext(),
-											EditFavoriteActivity.class);
-
-									intentEditFavoriteName.putExtra(
-											DBConstants.COL_FAVORITE_ID,
+							final List<FavoriteProductMapping> favoriteProductMappings = ManageFavoritesActivity.super
+									.getDatasource().getFavoriteProductMappingsByFavoriteId(
 											selectedFavorite.getId());
-									intentEditFavoriteName.putExtra(
-											DBConstants.COL_FAVORITE_NAME,
-											selectedFavorite.getName());
 
-									ManageFavoritesActivity.this
-											.startActivityForResult(
-													intentEditFavoriteName, 0);
-									return true;
+							// for each favoriteProductMapping check
+							// whether there is already an existing
+							// shoppinglistProductMapping
+							for (final FavoriteProductMapping favoriteProductMapping : favoriteProductMappings) {
+								final ShoppinglistProductMapping shoppinglistProductMapping = ManageFavoritesActivity.super
+										.getDatasource()
+										.checkWhetherShoppinglistProductMappingExists(
+												favoriteProductMapping.getStore().getId(),
+												favoriteProductMapping.getProduct().getId());
 
-								case R.id.popupDeleteFavorite:
-									// delete from mapping
-									final AlertDialog.Builder alertBox = new AlertDialog.Builder(
-											ManageFavoritesActivity.this.context);
-									alertBox.setMessage(ManageFavoritesActivity.this
-											.getString(R.string.msg_really_delete_favoritelist));
-									alertBox.setPositiveButton(
-											ManageFavoritesActivity.this
-													.getString(R.string.msg_yes),
-											new OnClickListener() {
+								if (shoppinglistProductMapping != null) {
+									// update the quantity
+									final Double quantityToUpdate = (Double
+											.valueOf(favoriteProductMapping.getQuantity()) + (Double
+											.valueOf(shoppinglistProductMapping.getQuantity())));
+									ManageFavoritesActivity.this.datasource.updateShoppinglistProductMapping(
+											shoppinglistProductMapping.getId(),
+											shoppinglistProductMapping.getStore().getId(),
+											shoppinglistProductMapping.getProduct().getId(),
+											String.valueOf(quantityToUpdate));
 
-												public void onClick(
-														final DialogInterface dialog,
-														final int which) {
+								} else {
+									// insert new mapping
+									ManageFavoritesActivity.this.datasource
+											.saveShoppingListProductMapping(favoriteProductMapping
+													.getStore().getId(), favoriteProductMapping
+													.getProduct().getId(), favoriteProductMapping
+													.getQuantity(), GlobalValues.NO);
 
-													// delete it
-													ManageFavoritesActivity.this.datasource
-															.deleteFavoriteAndItsMappings(selectedFavorite
-																	.getId());
-													ManageFavoritesActivity.this.favoriteListAdapter
-															.remove(selectedFavorite);
-
-												}
-											});
-
-									alertBox.setNegativeButton(
-											ManageFavoritesActivity.this
-													.getString(R.string.msg_no),
-											new OnClickListener() {
-
-												public void onClick(
-														final DialogInterface dialog,
-														final int which) {
-													// do nothing here
-												}
-											});
-
-									alertBox.show();
-
-									return true;
-								default:
-									return false;
 								}
 							}
 
-						});
+							return true;
 
-						return false;
+						case R.id.popupEditFavoriteName:
+							// switch to activity EditFavoriteActivity
+							final Intent intentEditFavoriteName = new Intent(
+									ManageFavoritesActivity.this.getApplicationContext(),
+									EditFavoriteActivity.class);
+
+							intentEditFavoriteName.putExtra(DBConstants.COL_FAVORITE_ID,
+									selectedFavorite.getId());
+							intentEditFavoriteName.putExtra(DBConstants.COL_FAVORITE_NAME,
+									selectedFavorite.getName());
+
+							ManageFavoritesActivity.this.startActivityForResult(
+									intentEditFavoriteName, 0);
+							return true;
+
+						case R.id.popupDeleteFavorite:
+							// delete from mapping
+							final AlertDialog.Builder alertBox = new AlertDialog.Builder(
+									ManageFavoritesActivity.this.context);
+							alertBox.setMessage(ManageFavoritesActivity.this
+									.getString(R.string.msg_really_delete_favoritelist));
+							alertBox.setPositiveButton(
+									ManageFavoritesActivity.this.getString(R.string.msg_yes),
+									new OnClickListener() {
+
+										public void onClick(final DialogInterface dialog,
+												final int which) {
+
+											// delete it
+											ManageFavoritesActivity.this.datasource
+													.deleteFavoriteAndItsMappings(selectedFavorite
+															.getId());
+											ManageFavoritesActivity.this.favoriteListAdapter
+													.remove(selectedFavorite);
+
+										}
+									});
+
+							alertBox.setNegativeButton(
+									ManageFavoritesActivity.this.getString(R.string.msg_no),
+									new OnClickListener() {
+
+										public void onClick(final DialogInterface dialog,
+												final int which) {
+											// do nothing here
+										}
+									});
+
+							alertBox.show();
+
+							return true;
+						default:
+							return false;
+						}
 					}
 
 				});
+
+				return false;
+			}
+
+		});
 	}
 
 	@Override
@@ -258,8 +226,7 @@ public class ManageFavoritesActivity extends AbstractShoppinglistActivity {
 
 		case R.id.actionbarAddFavorite:
 			// switch to the AddFavoriteActivity
-			final Intent intentAddFavorite = new Intent(this,
-					AddFavoriteActivity.class);
+			final Intent intentAddFavorite = new Intent(this, AddFavoriteActivity.class);
 			this.startActivityForResult(intentAddFavorite, 0);
 			break;
 

@@ -48,12 +48,12 @@
                 style="@style/View.Text.Label"
                 android:text="@string/label_add_new_product_name" >
             </TextView>
-			<AutoCompleteTextView
-			    android:layout_width="fill_parent" 
-			    android:layout_height="wrap_content"
-			    android:id="@+id/editTextProductNameAutocomplete"
-			    style="@style/Edit.Text" />
-           
+
+            <AutoCompleteTextView
+                android:id="@+id/editTextProductNameAutocomplete"
+                style="@style/Edit.Text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
         </TableRow>
 
         <TableRow>

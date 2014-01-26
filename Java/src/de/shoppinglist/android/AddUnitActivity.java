@@ -26,7 +26,8 @@ public class AddUnitActivity extends AbstractShoppinglistActivity {
 
 	private EditText editTextUnitName;
 
-	private List<Integer> editTextIds = new LinkedList<Integer>(Arrays.asList(R.id.editTextNameAddUnit));
+	private List<Integer> editTextIds = new LinkedList<Integer>(
+			Arrays.asList(R.id.editTextNameAddUnit));
 
 	/** Called when the activity is first created. */
 	@Override
@@ -38,7 +39,8 @@ public class AddUnitActivity extends AbstractShoppinglistActivity {
 		this.setContentView(R.layout.add_or_edit_unit);
 
 		this.editTextUnitName = (EditText) this.findViewById(R.id.editTextNameAddUnit);
-		this.editTextUnitName.addTextChangedListener(super.getTextWatcher(R.id.editTextNameAddUnit));
+		this.editTextUnitName
+				.addTextChangedListener(super.getTextWatcher(R.id.editTextNameAddUnit));
 
 		this.buttonAddUnit = (Button) this.findViewById(R.id.buttonConfirmAddUnit);
 		this.buttonAddUnit.setOnClickListener(new OnClickListener() {
@@ -48,21 +50,26 @@ public class AddUnitActivity extends AbstractShoppinglistActivity {
 
 					// check whether there is already an unit with this name
 					final Unit alreadyExistingUnit = AddUnitActivity.this.datasource
-							.getUnitByName(AddUnitActivity.this.editTextUnitName.getText().toString());
+							.getUnitByName(AddUnitActivity.this.editTextUnitName.getText()
+									.toString());
 
 					if (alreadyExistingUnit == null) {
 						// save new unit, when there is no unit with this name
-						AddUnitActivity.this.datasource.saveUnit(AddUnitActivity.this.editTextUnitName.getText().toString());
+						AddUnitActivity.this.datasource
+								.saveUnit(AddUnitActivity.this.editTextUnitName.getText()
+										.toString());
 						AddUnitActivity.this.finish();
 
 					} else {
 						Toast.makeText(AddUnitActivity.this.context,
-								AddUnitActivity.this.getString(R.string.msg_unit_already_exists), Toast.LENGTH_SHORT).show();
+								AddUnitActivity.this.getString(R.string.msg_unit_already_exists),
+								Toast.LENGTH_SHORT).show();
 					}
 				}
 			}
 		});
 	}
+
 	@Override
 	public boolean onOptionsItemSelected(final MenuItem item) {
 		switch (item.getItemId()) {

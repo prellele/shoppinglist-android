@@ -31,8 +31,8 @@ public class HistoryShoppinglistAdapter extends ArrayAdapter<History> {
 
 		String textToShow = "";
 
-		textToShow = historyToBeShown.getQuantity() + " " + historyToBeShown.getUnit() + " " + historyToBeShown.getProduct()
-				+ " bei " + historyToBeShown.getStore();
+		textToShow = historyToBeShown.getQuantity() + " " + historyToBeShown.getUnit() + " "
+				+ historyToBeShown.getProduct() + " bei " + historyToBeShown.getStore();
 
 		textView.setText(textToShow);
 

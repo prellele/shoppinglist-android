@@ -69,14 +69,17 @@ public class ShoppinglistViewsFactory implements RemoteViewsFactory {
 		final RemoteViews row = new RemoteViews(this.context.getPackageName(), R.layout.widget_row);
 
 		final String quantity = this.shoppinglistProductMappings.get(position).getQuantity();
-		final String unitName = this.shoppinglistProductMappings.get(position).getProduct().getUnit().getName();
-		final String productName = this.shoppinglistProductMappings.get(position).getProduct().getName();
-		final String storeName = this.shoppinglistProductMappings.get(position).getStore().getName();
+		final String unitName = this.shoppinglistProductMappings.get(position).getProduct()
+				.getUnit().getName();
+		final String productName = this.shoppinglistProductMappings.get(position).getProduct()
+				.getName();
+		final String storeName = this.shoppinglistProductMappings.get(position).getStore()
+				.getName();
 
 		String text = quantity + " " + unitName + " " + productName;
-		if (this.shoppinglistProductMappings.get(position).getStore().getId() != 1)		
-			text+= " (" + storeName + ")";
-		
+		if (this.shoppinglistProductMappings.get(position).getStore().getId() != 1)
+			text += " (" + storeName + ")";
+
 		row.setTextViewText(R.id.widgetRowText, text);
 
 		// strikethrough the text, if the item is already checked and show the

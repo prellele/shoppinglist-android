@@ -23,7 +23,8 @@ public class ShoppinglistWidgetBroadcastReceiver extends BroadcastReceiver {
 			final short mappingChecked = intent.getExtras().getShort(
 					ShoppinglistWidgetProvider.CLICKED_ROW_SHOPPINGLISTPRODUCTMAPPING_CHECKED);
 
-			final int mappingId = intent.getExtras().getInt(ShoppinglistWidgetProvider.CLICKED_ROW_SHOPPINGLISTPRODUCTMAPPING_ID);
+			final int mappingId = intent.getExtras().getInt(
+					ShoppinglistWidgetProvider.CLICKED_ROW_SHOPPINGLISTPRODUCTMAPPING_ID);
 
 			// update database
 			if (mappingChecked == GlobalValues.YES) {

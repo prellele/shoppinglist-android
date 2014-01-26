@@ -53,8 +53,8 @@ public class TranslateUmlauts {
 		TranslateUmlauts.fillMapWithUmlauts();
 
 		for (final String germanUmlaut : TranslateUmlauts.umlautsWithTranslations.keySet()) {
-			stringToReplaceUmlauts = stringToReplaceUmlauts.replace(TranslateUmlauts.umlautsWithTranslations.get(germanUmlaut),
-					germanUmlaut);
+			stringToReplaceUmlauts = stringToReplaceUmlauts.replace(
+					TranslateUmlauts.umlautsWithTranslations.get(germanUmlaut), germanUmlaut);
 		}
 		return stringToReplaceUmlauts;
 	}

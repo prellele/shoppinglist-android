@@ -52,7 +52,8 @@ public class ManageStoresActivity extends AbstractShoppinglistActivity {
 		// handle long clicks on the stores
 		this.listStores.setOnItemLongClickListener(new OnItemLongClickListener() {
 
-			public boolean onItemLongClick(final AdapterView<?> arg0, final View v, final int position, final long id) {
+			public boolean onItemLongClick(final AdapterView<?> arg0, final View v,
+					final int position, final long id) {
 				final PopupMenu popup = new PopupMenu(ManageStoresActivity.this.context, v);
 				final MenuInflater inflater = popup.getMenuInflater();
 				inflater.inflate(R.menu.popupmenu_manage_stores, popup.getMenu());
@@ -61,18 +62,22 @@ public class ManageStoresActivity extends AbstractShoppinglistActivity {
 				popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {
 
 					public boolean onMenuItemClick(final MenuItem item) {
-						final Store selectedStore = ManageStoresActivity.this.storeListAdapter.getItem(position);
+						final Store selectedStore = ManageStoresActivity.this.storeListAdapter
+								.getItem(position);
 
 						switch (item.getItemId()) {
 
 						case R.id.popupEditStore:
 							// switch to the AddStoreActivity
-							final Intent intentEditStore = new Intent(ManageStoresActivity.this.context, EditStoreActivity.class);
+							final Intent intentEditStore = new Intent(
+									ManageStoresActivity.this.context, EditStoreActivity.class);
 
 							// put the store attributes in here, so we
 							// can show it in the edit-layout
-							intentEditStore.putExtra(DBConstants.COL_STORE_ID, selectedStore.getId());
-							intentEditStore.putExtra(DBConstants.COL_STORE_NAME, selectedStore.getName());
+							intentEditStore.putExtra(DBConstants.COL_STORE_ID,
+									selectedStore.getId());
+							intentEditStore.putExtra(DBConstants.COL_STORE_NAME,
+									selectedStore.getName());
 
 							ManageStoresActivity.this.startActivityForResult(intentEditStore, 0);
 							break;
@@ -82,18 +87,25 @@ public class ManageStoresActivity extends AbstractShoppinglistActivity {
 							// (fav_mapping, shop_mapping)
 							// wenn in Benutzung, Toast. mit nachricht
 							// wenn nicht, löschen
-							if (ManageStoresActivity.this.datasource.checkWhetherStoreIsNotInUse(selectedStore.getId())) {
+							if (ManageStoresActivity.this.datasource
+									.checkWhetherStoreIsNotInUse(selectedStore.getId())) {
 								if (ManageStoresActivity.this.storeListAdapter.getCount() > 1) {
-									ManageStoresActivity.this.datasource.deleteStore(selectedStore.getId());
-									ManageStoresActivity.this.storeListAdapter.remove(selectedStore);
+									ManageStoresActivity.this.datasource.deleteStore(selectedStore
+											.getId());
+									ManageStoresActivity.this.storeListAdapter
+											.remove(selectedStore);
 								} else {
-									Toast.makeText(ManageStoresActivity.this.context,
-											ManageStoresActivity.this.getString(R.string.msg_last_store_cant_delete),
+									Toast.makeText(
+											ManageStoresActivity.this.context,
+											ManageStoresActivity.this
+													.getString(R.string.msg_last_store_cant_delete),
 											Toast.LENGTH_SHORT).show();
 								}
 							} else {
-								Toast.makeText(ManageStoresActivity.this.context,
-										ManageStoresActivity.this.getString(R.string.msg_store_in_use_cant_delete),
+								Toast.makeText(
+										ManageStoresActivity.this.context,
+										ManageStoresActivity.this
+												.getString(R.string.msg_store_in_use_cant_delete),
 										Toast.LENGTH_SHORT).show();
 							}
 
@@ -130,7 +142,7 @@ public class ManageStoresActivity extends AbstractShoppinglistActivity {
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			break;
-			
+
 		case R.id.actionbarAddStore:
 			// switch to the AddStoreActivity
 			final Intent intentAddStore = new Intent(this, AddStoreActivity.class);

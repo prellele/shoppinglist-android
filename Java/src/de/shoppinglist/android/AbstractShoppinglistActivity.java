@@ -60,14 +60,14 @@ public abstract class AbstractShoppinglistActivity extends Activity {
 				// no operation
 			}
 
-			public void beforeTextChanged(final CharSequence s,
-					final int start, final int count, final int after) {
+			public void beforeTextChanged(final CharSequence s, final int start, final int count,
+					final int after) {
 				// no operation
 
 			}
 
-			public void onTextChanged(final CharSequence s, final int start,
-					final int before, final int count) {
+			public void onTextChanged(final CharSequence s, final int start, final int before,
+					final int count) {
 				// if the text changed clear the error message in the edittext.
 				editText.setError(null);
 			}
@@ -91,8 +91,7 @@ public abstract class AbstractShoppinglistActivity extends Activity {
 	protected void onPause() {
 		super.onPause();
 		this.datasource.close();
-		this.sendBroadcast(new Intent(
-				"android.appwidget.action.APPWIDGET_UPDATE"));
+		this.sendBroadcast(new Intent("android.appwidget.action.APPWIDGET_UPDATE"));
 	}
 
 	@Override
@@ -112,13 +111,11 @@ public abstract class AbstractShoppinglistActivity extends Activity {
 		boolean noEmptyEditText = true;
 		for (final Integer editTextId : editTextIds) {
 			if (this.findViewById(editTextId) instanceof EditText) {
-				final EditText editText = (EditText) this
-						.findViewById(editTextId);
+				final EditText editText = (EditText) this.findViewById(editTextId);
 
 				if ((editText.getText().toString() == null)
 						|| editText.getText().toString().isEmpty()) {
-					editText.setError(this
-							.getString(R.string.msg_cannot_be_emtpy));
+					editText.setError(this.getString(R.string.msg_cannot_be_emtpy));
 					noEmptyEditText = false;
 				}
 			}

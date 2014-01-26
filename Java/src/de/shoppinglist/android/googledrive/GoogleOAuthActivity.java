@@ -45,9 +45,11 @@ public class GoogleOAuthActivity extends AbstractShoppinglistActivity {
 		super.finish();
 
 		if (this.isErrorOccured) {
-			Toast.makeText(this.context, this.getString(R.string.msg_no_permission_google_oauth), Toast.LENGTH_SHORT).show();
+			Toast.makeText(this.context, this.getString(R.string.msg_no_permission_google_oauth),
+					Toast.LENGTH_SHORT).show();
 		} else {
-			GoogleOAuthActivity.this.startActivity(new Intent(GoogleOAuthActivity.this, DriveApiActivity.class));
+			GoogleOAuthActivity.this.startActivity(new Intent(GoogleOAuthActivity.this,
+					DriveApiActivity.class));
 		}
 	}
 
@@ -63,7 +65,8 @@ public class GoogleOAuthActivity extends AbstractShoppinglistActivity {
 		}
 
 		if (android.os.Build.VERSION.SDK_INT > 9) {
-			final StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+			final StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+					.permitAll().build();
 			StrictMode.setThreadPolicy(policy);
 		}
 	}
@@ -72,26 +75,30 @@ public class GoogleOAuthActivity extends AbstractShoppinglistActivity {
 	public void onResume() {
 		super.onResume();
 		// only do the OAuth-Key-Dance when there's no token saved.
-		if (this.credentialStore.read().getAccessToken() == null || this.credentialStore.read().getAccessToken().isEmpty()) {
+		if (this.credentialStore.read().getAccessToken() == null
+				|| this.credentialStore.read().getAccessToken().isEmpty()) {
 
 			final WebView webview = new WebView(this);
 			webview.getSettings().setJavaScriptEnabled(true);
 			webview.setVisibility(View.VISIBLE);
 			this.setContentView(webview);
-			final String authorizationUrl = new GoogleAuthorizationCodeRequestUrl(OAuth2ClientCredentials.CLIENT_ID,
-					OAuth2ClientCredentials.REDIRECT_URI, OAuth2ClientCredentials.SCOPE).build();
+			final String authorizationUrl = new GoogleAuthorizationCodeRequestUrl(
+					OAuth2ClientCredentials.CLIENT_ID, OAuth2ClientCredentials.REDIRECT_URI,
+					OAuth2ClientCredentials.SCOPE).build();
 
 			/* WebViewClient must be set BEFORE calling loadUrl! */
 			webview.setWebViewClient(new WebViewClient() {
 
 				private String extractCodeFromUrl(final String url) {
-					return url.substring(OAuth2ClientCredentials.REDIRECT_URI.length() + 7, url.length());
+					return url.substring(OAuth2ClientCredentials.REDIRECT_URI.length() + 7,
+							url.length());
 				}
 
 				@Override
 				public void onPageFinished(final WebView view, final String url) {
 
-					if (url.startsWith(OAuth2ClientCredentials.REDIRECT_URI) && (GoogleOAuthActivity.this.counter == 0)) {
+					if (url.startsWith(OAuth2ClientCredentials.REDIRECT_URI)
+							&& (GoogleOAuthActivity.this.counter == 0)) {
 						try {
 
 							if (url.indexOf("code=") != -1) {
@@ -99,14 +106,17 @@ public class GoogleOAuthActivity extends AbstractShoppinglistActivity {
 								final String code = this.extractCodeFromUrl(url);
 
 								final GoogleTokenResponse googleTokenResponse = new GoogleAuthorizationCodeTokenRequest(
-										new NetHttpTransport(), new JacksonFactory(), OAuth2ClientCredentials.CLIENT_ID,
-										OAuth2ClientCredentials.CLIENT_SECRET, code, OAuth2ClientCredentials.REDIRECT_URI)
-										.execute();
+										new NetHttpTransport(), new JacksonFactory(),
+										OAuth2ClientCredentials.CLIENT_ID,
+										OAuth2ClientCredentials.CLIENT_SECRET, code,
+										OAuth2ClientCredentials.REDIRECT_URI).execute();
 
-								credentialStore = new SharedPreferencesCredentialStore(GoogleOAuthActivity.this.prefs);
+								credentialStore = new SharedPreferencesCredentialStore(
+										GoogleOAuthActivity.this.prefs);
 								credentialStore.write(googleTokenResponse);
 								view.setVisibility(View.INVISIBLE);
-								GoogleOAuthActivity.this.setContentView(R.layout.user_configuration);
+								GoogleOAuthActivity.this
+										.setContentView(R.layout.user_configuration);
 
 								GoogleOAuthActivity.this.counter++;
 
@@ -133,16 +143,18 @@ public class GoogleOAuthActivity extends AbstractShoppinglistActivity {
 		} else {
 			GoogleTokenResponse googleRefreshTokenResponse = null;
 			try {
-				googleRefreshTokenResponse = new GoogleRefreshTokenRequest(new NetHttpTransport(), new JacksonFactory(),
-						credentialStore.read().getRefreshToken(), OAuth2ClientCredentials.CLIENT_ID,
-						OAuth2ClientCredentials.CLIENT_SECRET).execute();
+				googleRefreshTokenResponse = new GoogleRefreshTokenRequest(new NetHttpTransport(),
+						new JacksonFactory(), credentialStore.read().getRefreshToken(),
+						OAuth2ClientCredentials.CLIENT_ID, OAuth2ClientCredentials.CLIENT_SECRET)
+						.execute();
 			} catch (IOException e) {
 
 				e.printStackTrace();
 			}
 
 			credentialStore = new SharedPreferencesCredentialStore(GoogleOAuthActivity.this.prefs);
-			credentialStore.refreshAccessTokenAndExpiresIn(googleRefreshTokenResponse.getAccessToken(),
+			credentialStore.refreshAccessTokenAndExpiresIn(
+					googleRefreshTokenResponse.getAccessToken(),
 					googleRefreshTokenResponse.getExpiresInSeconds());
 
 			finish();

@@ -56,17 +56,13 @@ public class StoreProductsActivity extends AbstractShoppinglistActivity {
 		this.setContentView(R.layout.store_products);
 
 		// get the name and the id of the clicked store
-		this.clickedStoreId = this.getIntent().getIntExtra(
-				DBConstants.COL_STORE_ID, -1);
-		final String clickedStoreName = this.getIntent().getStringExtra(
-				DBConstants.COL_STORE_NAME);
+		this.clickedStoreId = this.getIntent().getIntExtra(DBConstants.COL_STORE_ID, -1);
+		final String clickedStoreName = this.getIntent().getStringExtra(DBConstants.COL_STORE_NAME);
 
 		// update the title - show the clicked/shown store
-		String updateTitle = this.getResources().getString(
-				R.string.store_products_view);
+		String updateTitle = this.getResources().getString(R.string.store_products_view);
 		updateTitle += " " + clickedStoreName;
-		this.storeProductsTitleTextView = ((TextView) this
-				.findViewById(R.id.storeProductsTextView));
+		this.storeProductsTitleTextView = ((TextView) this.findViewById(R.id.storeProductsTextView));
 		this.storeProductsTitleTextView.setText(updateTitle);
 
 		this.shoppinglistProductMappings = this.datasource
@@ -76,63 +72,54 @@ public class StoreProductsActivity extends AbstractShoppinglistActivity {
 		this.setProcessTextInStoreView();
 
 		// show the products in the view
-		this.shoppinglistProductMappingAdapter = new ShoppinglistProductMappingAdapter(
-				this, this.shoppinglistProductMappings);
+		this.shoppinglistProductMappingAdapter = new ShoppinglistProductMappingAdapter(this,
+				this.shoppinglistProductMappings);
 		this.listShoppinglistProductMapping = (ListView) this
 				.findViewById(R.id.listShoppinglistProductMappingsStore);
-		this.listShoppinglistProductMapping
-				.setAdapter(this.shoppinglistProductMappingAdapter);
+		this.listShoppinglistProductMapping.setAdapter(this.shoppinglistProductMappingAdapter);
 
 		// handle "normal" clicks on shoppinglistItems -> mark them as checked
-		this.listShoppinglistProductMapping
-				.setOnItemClickListener(new OnItemClickListener() {
+		this.listShoppinglistProductMapping.setOnItemClickListener(new OnItemClickListener() {
 
-					public void onItemClick(final AdapterView<?> arg0,
-							final View v, final int position, final long id) {
+			public void onItemClick(final AdapterView<?> arg0, final View v, final int position,
+					final long id) {
 
-						final ShoppinglistProductMapping clickedMapping = StoreProductsActivity.this.shoppinglistProductMappingAdapter
-								.getItem(position);
+				final ShoppinglistProductMapping clickedMapping = StoreProductsActivity.this.shoppinglistProductMappingAdapter
+						.getItem(position);
 
-						if (clickedMapping.isChecked() == GlobalValues.NO) {
+				if (clickedMapping.isChecked() == GlobalValues.NO) {
 
+					StoreProductsActivity.this.shoppinglistProductMappings.get(
 							StoreProductsActivity.this.shoppinglistProductMappings
-									.get(StoreProductsActivity.this.shoppinglistProductMappings
-											.indexOf(clickedMapping))
-									.setChecked(GlobalValues.YES);
-							StoreProductsActivity.this.datasource
-									.markShoppinglistProductMappingAsChecked(clickedMapping
-											.getId());
-						} else if (clickedMapping.isChecked() == GlobalValues.YES) {
+									.indexOf(clickedMapping)).setChecked(GlobalValues.YES);
+					StoreProductsActivity.this.datasource
+							.markShoppinglistProductMappingAsChecked(clickedMapping.getId());
+				} else if (clickedMapping.isChecked() == GlobalValues.YES) {
 
+					StoreProductsActivity.this.shoppinglistProductMappings.get(
 							StoreProductsActivity.this.shoppinglistProductMappings
-									.get(StoreProductsActivity.this.shoppinglistProductMappings
-											.indexOf(clickedMapping))
-									.setChecked(GlobalValues.NO);
-							StoreProductsActivity.this.datasource
-									.markShoppinglistProductMappingAsUnchecked(clickedMapping
-											.getId());
-						}
+									.indexOf(clickedMapping)).setChecked(GlobalValues.NO);
+					StoreProductsActivity.this.datasource
+							.markShoppinglistProductMappingAsUnchecked(clickedMapping.getId());
+				}
 
-						StoreProductsActivity.this.shoppinglistProductMappingAdapter
-								.notifyDataSetChanged();
+				StoreProductsActivity.this.shoppinglistProductMappingAdapter.notifyDataSetChanged();
 
-						// update the process
-						StoreProductsActivity.this.setProcessTextInStoreView();
-					}
-				});
+				// update the process
+				StoreProductsActivity.this.setProcessTextInStoreView();
+			}
+		});
 
 		// handle long-clicks on shoppinglistItems
 		this.listShoppinglistProductMapping
 				.setOnItemLongClickListener(new OnItemLongClickListener() {
 
-					public boolean onItemLongClick(final AdapterView<?> arg0,
-							final View v, final int position, final long id) {
+					public boolean onItemLongClick(final AdapterView<?> arg0, final View v,
+							final int position, final long id) {
 
-						final PopupMenu popup = new PopupMenu(
-								StoreProductsActivity.this.context, v);
+						final PopupMenu popup = new PopupMenu(StoreProductsActivity.this.context, v);
 						final MenuInflater inflater = popup.getMenuInflater();
-						inflater.inflate(R.menu.popupmenu_products_overview,
-								popup.getMenu());
+						inflater.inflate(R.menu.popupmenu_products_overview, popup.getMenu());
 						popup.show();
 						// handle clicks on the popup-buttons
 						popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {
@@ -159,25 +146,18 @@ public class StoreProductsActivity extends AbstractShoppinglistActivity {
 											shoppinglistProductMapping.getId());
 									intent.putExtra(
 											DBConstants.COL_SHOPPINGLIST_PRODUCT_MAPPING_QUANTITY,
-											shoppinglistProductMapping
-													.getQuantity());
+											shoppinglistProductMapping.getQuantity());
 									intent.putExtra(DBConstants.COL_UNIT_ID,
-											shoppinglistProductMapping
-													.getProduct().getUnit()
+											shoppinglistProductMapping.getProduct().getUnit()
 													.getId());
-									intent.putExtra(
-											DBConstants.COL_PRODUCT_NAME,
-											shoppinglistProductMapping
-													.getProduct().getName());
+									intent.putExtra(DBConstants.COL_PRODUCT_NAME,
+											shoppinglistProductMapping.getProduct().getName());
 									intent.putExtra(DBConstants.COL_PRODUCT_ID,
-											shoppinglistProductMapping
-													.getProduct().getId());
+											shoppinglistProductMapping.getProduct().getId());
 									intent.putExtra(DBConstants.COL_STORE_ID,
-											shoppinglistProductMapping
-													.getStore().getId());
+											shoppinglistProductMapping.getStore().getId());
 
-									StoreProductsActivity.this
-											.startActivityForResult(intent, 0);
+									StoreProductsActivity.this.startActivityForResult(intent, 0);
 
 									return true;
 
@@ -197,8 +177,7 @@ public class StoreProductsActivity extends AbstractShoppinglistActivity {
 										StoreProductsActivity.this.finish();
 									} else {
 										// update the process
-										StoreProductsActivity.this
-												.setProcessTextInStoreView();
+										StoreProductsActivity.this.setProcessTextInStoreView();
 									}
 
 									return true;
@@ -242,51 +221,41 @@ public class StoreProductsActivity extends AbstractShoppinglistActivity {
 
 		// ManageStoresButton - Actionbar
 		case R.id.actionbarManageStores:
-			final Intent intentManageStores = new Intent(this,
-					ManageStoresActivity.class);
+			final Intent intentManageStores = new Intent(this, ManageStoresActivity.class);
 			this.startActivityForResult(intentManageStores, 0);
 			break;
 
 		// ManageUnitsButton - Actionbar
 		case R.id.actionbarManageUnits:
-			final Intent intentManageUnits = new Intent(this,
-					ManageUnitsActivity.class);
+			final Intent intentManageUnits = new Intent(this, ManageUnitsActivity.class);
 			this.startActivityForResult(intentManageUnits, 0);
 			break;
 
 		// ManageFavoritesButton - Actionbar
 		case R.id.actionbarManageFavorites:
-			final Intent intentManageFavorites = new Intent(this,
-					ManageFavoritesActivity.class);
+			final Intent intentManageFavorites = new Intent(this, ManageFavoritesActivity.class);
 			this.startActivityForResult(intentManageFavorites, 0);
 			break;
 
 		// deleteShoppinglistMappingsButton - Actionbar
 		case R.id.actionbarDeleteShoppinglist:
 			final AlertDialog.Builder alertBox = new AlertDialog.Builder(this);
-			alertBox.setMessage(this
-					.getString(R.string.msg_really_delete_shoppinglist));
-			alertBox.setPositiveButton(this.getString(R.string.msg_yes),
-					new OnClickListener() {
+			alertBox.setMessage(this.getString(R.string.msg_really_delete_shoppinglist));
+			alertBox.setPositiveButton(this.getString(R.string.msg_yes), new OnClickListener() {
 
-						public void onClick(final DialogInterface dialog,
-								final int which) {
-							StoreProductsActivity.this.datasource
-									.deleteAllShoppinglistProductMappings();
-							StoreProductsActivity.this.datasource
-									.createNewShoppinglist();
-							StoreProductsActivity.this.refreshLayout();
-						}
-					});
+				public void onClick(final DialogInterface dialog, final int which) {
+					StoreProductsActivity.this.datasource.deleteAllShoppinglistProductMappings();
+					StoreProductsActivity.this.datasource.createNewShoppinglist();
+					StoreProductsActivity.this.refreshLayout();
+				}
+			});
 
-			alertBox.setNegativeButton(this.getString(R.string.msg_no),
-					new OnClickListener() {
+			alertBox.setNegativeButton(this.getString(R.string.msg_no), new OnClickListener() {
 
-						public void onClick(final DialogInterface dialog,
-								final int which) {
-							// do nothing here
-						}
-					});
+				public void onClick(final DialogInterface dialog, final int which) {
+					// do nothing here
+				}
+			});
 
 			alertBox.show();
 
@@ -295,16 +264,14 @@ public class StoreProductsActivity extends AbstractShoppinglistActivity {
 		// ViewHistory - Actionbar
 		case R.id.actionbarShowHistory:
 			// switch to the UserConfigurationActivity
-			final Intent intentHistoryOverview = new Intent(this,
-					ShowHistoryOverviewActivity.class);
+			final Intent intentHistoryOverview = new Intent(this, ShowHistoryOverviewActivity.class);
 			this.startActivityForResult(intentHistoryOverview, 0);
 			break;
 
 		// OptionsMenu - Actionbar
 		case R.id.actionbarOptions:
 			// switch to the UserConfigurationActivity
-			final Intent intentUserConfiguration = new Intent(this,
-					UserConfigurationActivity.class);
+			final Intent intentUserConfiguration = new Intent(this, UserConfigurationActivity.class);
 			this.startActivityForResult(intentUserConfiguration, 0);
 			break;
 
@@ -328,18 +295,15 @@ public class StoreProductsActivity extends AbstractShoppinglistActivity {
 
 			this.shoppinglistProductMappings = this.datasource
 					.getProductsOnShoppingList(this.clickedStoreId);
-			this.shoppinglistProductMappingAdapter = new ShoppinglistProductMappingAdapter(
-					this, this.shoppinglistProductMappings);
-			this.listShoppinglistProductMapping
-					.setAdapter(this.shoppinglistProductMappingAdapter);
+			this.shoppinglistProductMappingAdapter = new ShoppinglistProductMappingAdapter(this,
+					this.shoppinglistProductMappings);
+			this.listShoppinglistProductMapping.setAdapter(this.shoppinglistProductMappingAdapter);
 
 			// May the storeName has changed - so update title
-			final Store store = this.datasource
-					.getStoreById(this.clickedStoreId);
+			final Store store = this.datasource.getStoreById(this.clickedStoreId);
 
 			// update the title - show the clicked/shown store
-			String updateTitle = this.getResources().getString(
-					R.string.store_products_view);
+			String updateTitle = this.getResources().getString(R.string.store_products_view);
 			updateTitle += " \"" + store.getName() + " \"";
 			this.storeProductsTitleTextView.setText(updateTitle);
 
@@ -363,13 +327,13 @@ public class StoreProductsActivity extends AbstractShoppinglistActivity {
 			}
 		}
 
-		final int colorToShow = ProcessColorHelper.getColorForProcess(
-				checkedMappingsCount, allMappingsCount);
+		final int colorToShow = ProcessColorHelper.getColorForProcess(checkedMappingsCount,
+				allMappingsCount);
 
 		this.labelProcessStoreProducts = (TextView) this
 				.findViewById(R.id.labelStoreProductsStatus);
-		this.labelProcessStoreProducts.setText("( " + checkedMappingsCount
-				+ " / " + allMappingsCount + " )");
+		this.labelProcessStoreProducts.setText("( " + checkedMappingsCount + " / "
+				+ allMappingsCount + " )");
 		this.labelProcessStoreProducts.setTextColor(colorToShow);
 	}
 }

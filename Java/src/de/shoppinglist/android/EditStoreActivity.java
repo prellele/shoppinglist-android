@@ -28,7 +28,8 @@ public class EditStoreActivity extends AbstractShoppinglistActivity {
 
 	private EditText editTextStoreName;
 
-	private List<Integer> editTextIds = new LinkedList<Integer>(Arrays.asList(R.id.editTextNameAddStore));
+	private List<Integer> editTextIds = new LinkedList<Integer>(
+			Arrays.asList(R.id.editTextNameAddStore));
 
 	private TextView textViewTitle;
 
@@ -43,7 +44,8 @@ public class EditStoreActivity extends AbstractShoppinglistActivity {
 
 		// get values of calling activity
 		final int selectedStoreId = this.getIntent().getIntExtra(DBConstants.COL_STORE_ID, -1);
-		final String selectedStoreName = this.getIntent().getStringExtra(DBConstants.COL_STORE_NAME);
+		final String selectedStoreName = this.getIntent()
+				.getStringExtra(DBConstants.COL_STORE_NAME);
 
 		// set the title to match activity
 		this.textViewTitle = (TextView) this.findViewById(R.id.titleAddStore);
@@ -51,7 +53,8 @@ public class EditStoreActivity extends AbstractShoppinglistActivity {
 
 		this.editTextStoreName = (EditText) this.findViewById(R.id.editTextNameAddStore);
 		this.editTextStoreName.setText(selectedStoreName);
-		this.editTextStoreName.addTextChangedListener(super.getTextWatcher(R.id.editTextNameAddStore));
+		this.editTextStoreName.addTextChangedListener(super
+				.getTextWatcher(R.id.editTextNameAddStore));
 
 		this.buttonConfirmEdit = (Button) this.findViewById(R.id.buttonConfirmAddStore);
 		this.buttonConfirmEdit.setText(R.string.button_text_save);
@@ -62,26 +65,30 @@ public class EditStoreActivity extends AbstractShoppinglistActivity {
 
 					// check whether there is a store with this name already
 					final Store alreadyExistingStore = EditStoreActivity.this.datasource
-							.getStoreByName(EditStoreActivity.this.editTextStoreName.getText().toString());
+							.getStoreByName(EditStoreActivity.this.editTextStoreName.getText()
+									.toString());
 
 					if (alreadyExistingStore == null) {
 
 						final Store storeToUpdate = new Store();
 						storeToUpdate.setId(selectedStoreId);
-						storeToUpdate.setName(EditStoreActivity.this.editTextStoreName.getText().toString());
+						storeToUpdate.setName(EditStoreActivity.this.editTextStoreName.getText()
+								.toString());
 
 						EditStoreActivity.this.datasource.updateStore(storeToUpdate);
 						EditStoreActivity.this.finish();
 
 					} else {
-						Toast.makeText(EditStoreActivity.this.context,
-								EditStoreActivity.this.getString(R.string.msg_store_already_exists), Toast.LENGTH_SHORT).show();
+						Toast.makeText(
+								EditStoreActivity.this.context,
+								EditStoreActivity.this.getString(R.string.msg_store_already_exists),
+								Toast.LENGTH_SHORT).show();
 					}
 				}
 			}
 		});
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(final MenuItem item) {
 		switch (item.getItemId()) {

@@ -33,7 +33,8 @@ public class SendEmailActivity extends AbstractShoppinglistActivity {
 
 	private EditText editTextRecipient;
 
-	private List<Integer> editTextIds = new LinkedList<Integer>(Arrays.asList(R.id.editTextRecipient));
+	private List<Integer> editTextIds = new LinkedList<Integer>(
+			Arrays.asList(R.id.editTextRecipient));
 
 	@Override
 	public void onCreate(final Bundle savedInstanceState) {
@@ -53,12 +54,14 @@ public class SendEmailActivity extends AbstractShoppinglistActivity {
 			public void onClick(final View v) {
 				if (SendEmailActivity.super.setErrorOnEmptyEditTexts(editTextIds)) {
 
-					SendEmailActivity.this.stores = SendEmailActivity.this.datasource.getStoresForOverview();
+					SendEmailActivity.this.stores = SendEmailActivity.this.datasource
+							.getStoresForOverview();
 					String text = "";
 
 					for (int i = 0; i < stores.size(); i++) {
 
-						text = text + getString(R.string.export_email_at_which_store) + " " + stores.get(i).getName() + ":\n";
+						text = text + getString(R.string.export_email_at_which_store) + " "
+								+ stores.get(i).getName() + ":\n";
 						SendEmailActivity.this.shoppinglistProductMappingsToSend = SendEmailActivity.this.datasource
 								.getProductsOnShoppingList(stores.get(i).getId());
 
@@ -70,20 +73,24 @@ public class SendEmailActivity extends AbstractShoppinglistActivity {
 						text = text + "\n\n";
 					}
 
-					if (Pattern.compile(GlobalValues.EMAIL_PATTERN).matcher(editTextRecipient.getText().toString()).matches()) {
+					if (Pattern.compile(GlobalValues.EMAIL_PATTERN)
+							.matcher(editTextRecipient.getText().toString()).matches()) {
 
 						final Intent emailIntent = new Intent(Intent.ACTION_SEND);
 
 						emailIntent.setType("plain/text");
-						emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] { editTextRecipient.getText().toString() });
-						emailIntent.putExtra(Intent.EXTRA_SUBJECT,
-								SendEmailActivity.this.getString(R.string.export_email_current_shoppinglist));
+						emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] { editTextRecipient
+								.getText().toString() });
+						emailIntent.putExtra(Intent.EXTRA_SUBJECT, SendEmailActivity.this
+								.getString(R.string.export_email_current_shoppinglist));
 						emailIntent.putExtra(Intent.EXTRA_TEXT, text);
 						SendEmailActivity.this.startActivity(Intent.createChooser(emailIntent,
 								SendEmailActivity.this.getString(R.string.export_email_send_via)));
 					} else {
-						final Toast invalidEmailAlert = Toast.makeText(SendEmailActivity.this.context,
-								SendEmailActivity.this.getString(R.string.export_email_invalid_email), Toast.LENGTH_SHORT);
+						final Toast invalidEmailAlert = Toast.makeText(
+								SendEmailActivity.this.context, SendEmailActivity.this
+										.getString(R.string.export_email_invalid_email),
+								Toast.LENGTH_SHORT);
 						invalidEmailAlert.show();
 					}
 				}
@@ -91,7 +98,7 @@ public class SendEmailActivity extends AbstractShoppinglistActivity {
 		});
 
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(final MenuItem item) {
 		switch (item.getItemId()) {
