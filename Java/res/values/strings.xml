@@ -69,7 +69,7 @@
     <string name="export_google_drive_file_name">Filename:</string>
     <string name="export_google_button_export">export</string>
     <string name="import_google_button">import</string>
-    <string name="import_google_drive_title">Google Drive emport</string>
+    <string name="import_google_drive_title">Google Drive import</string>
     <string name="popup_google_import_file_title">select shoppinglist ...</string>
     <string name="button_abort">cancel</string>
     <string name="sqlstatement_not_specified">not specified</string>
