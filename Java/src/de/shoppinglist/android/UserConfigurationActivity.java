@@ -1,5 +1,7 @@
 package de.shoppinglist.android;
 
+import java.util.List;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +10,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RadioButton;
+import de.shoppinglist.android.bean.ShoppinglistProductMapping;
+import de.shoppinglist.android.bean.Store;
 import de.shoppinglist.android.constant.ConfigurationConstants;
 import de.shoppinglist.android.constant.GlobalValues;
 import de.shoppinglist.android.datasource.ShoppinglistDataSource;
@@ -18,6 +22,8 @@ public class UserConfigurationActivity extends AbstractShoppinglistActivity {
 	private Button buttonExportEmail;
 
 	private Button buttonExportGoogle;
+	
+	private Button buttonShare;
 
 	private Button buttonSaveConfiguration;
 
@@ -90,7 +96,7 @@ public class UserConfigurationActivity extends AbstractShoppinglistActivity {
 				UserConfigurationActivity.this.startActivityForResult(intentOAuthGoogle, 0);
 
 			}
-		});
+		});	
 	}
 
 	@Override

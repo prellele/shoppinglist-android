@@ -391,6 +391,32 @@ public class ShoppinglistActivity extends AbstractShoppinglistActivity {
 			this.startActivityForResult(intentHistoryOverview, 0);
 			break;
 
+		// ShareList - Actionbar
+		case R.id.actionbarShareList:
+			List<Store> stores = ShoppinglistActivity.this.datasource
+					.getStoresForOverview();
+			String text = "";
+
+			for (int i = 0; i < stores.size(); i++) {
+
+				text = text + getString(R.string.export_email_at_which_store)
+						+ " " + stores.get(i).getName() + ":\n";
+				List<ShoppinglistProductMapping> shoppinglistProductMappingsToSend = ShoppinglistActivity.this.datasource
+						.getProductsOnShoppingList(stores.get(i).getId());
+
+				for (final ShoppinglistProductMapping mapping : shoppinglistProductMappingsToSend) {
+					if (mapping.isChecked() == GlobalValues.NO) {
+						text = text + "- " + mapping.toString() + "\n";
+					}
+				}
+			}
+			Intent sendIntent = new Intent();
+			sendIntent.setAction(Intent.ACTION_SEND);
+			sendIntent.putExtra(Intent.EXTRA_TEXT, text);
+			sendIntent.setType("text/plain");
+			startActivity(sendIntent);
+			break;
+			
 		// deleteShoppinglistMappingsButton - Actionbar
 		case R.id.actionbarDeleteShoppinglist:
 			final AlertDialog.Builder alertBox = new AlertDialog.Builder(this);

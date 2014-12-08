@@ -38,8 +38,14 @@
         android:title="@string/actionbar_show_history">
     </item>
     <item
-        android:id="@+id/actionbarOptions"
+        android:id="@+id/actionbarShareList"
         android:orderInCategory="30"
+        android:showAsAction="never"
+        android:title="@string/actionbar_share_list">
+    </item>
+    <item
+        android:id="@+id/actionbarOptions"
+        android:orderInCategory="35"
         android:showAsAction="never"
         android:title="@string/actionbar_options">
     </item>

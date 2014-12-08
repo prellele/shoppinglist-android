@@ -22,6 +22,7 @@
     <string name="actionbar_options">Settings</string>
     <string name="actionbar_delete_shoppinglist">delete shoppinglist</string>
     <string name="actionbar_manage_stores">manage markets</string>
+    <string name="actionbar_share_list">share list</string>
     <string name="actionbar_manage_units">manage units</string>
     <string name="label_view_type">view:</string>
     <string name="radio_button_view_type_store">order by market</string>
