@@ -20,8 +20,8 @@
     <string name="msg_google_export_empty_shoppinglist">Die Einkaufsliste ist leer. Es gibt nichts zu exportieren.</string>
     <string name="msg_google_import_not_compatible">Die ausgewählte Datei ist keine gültige Einkaufsliste für diese Anwendung.</string>
     <string name="msg_google_import_successful">Die Einkaufsliste wurde erfolgreich importiert.</string>
-    <string name="msg_google_export_exporting">Einkaufsliste wird exportiert ...</string>
-    <string name="msg_google_import_importing">Einkaufsliste wird importiert ...</string>
-    <string name="msg_google_import_export_oauth">Verbindung zu Google Drive wird hergestellt ...</string>
+    <string name="msg_google_export_exporting">Einkaufsliste wird exportiert …</string>
+    <string name="msg_google_import_importing">Einkaufsliste wird importiert …</string>
+    <string name="msg_google_import_export_oauth">Verbindung zu Google Drive wird hergestellt …</string>
 
 </resources>

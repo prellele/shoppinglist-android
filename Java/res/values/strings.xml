@@ -3,6 +3,7 @@
 
     <string name="title_overview_store">Shoppinglist ordered by market</string>
     <string name="app_name">Shoppinglist</string>
+    <string name="not_yet">not yet</string>
     <string name="overview_alphabetically">Alphabetical overview</string>
     <string name="store_products_view">Shoppinglist for</string>
     <string name="actionbar_add_new_product">+ Product </string>
@@ -54,12 +55,7 @@
     <string name="popup_button_add_favoritelist_to_shoppinglist">add list to shoppinglist</string>
     <string name="user_configuration_export_import">export / import</string>
     <string name="user_configuration_email">email</string>
-    <string name="export_email_email_address">email address:</string>
-    <string name="export_email_send">send</string>
-    <string name="export_email_invalid_email">invalid email</string>
-    <string name="export_email_send_via">send list via...</string>
-    <string name="export_email_email_export">email export</string>
-    <string name="export_email_at_which_store">at</string>
+    <string name="export_at_store">at</string>
     <string name="google_docs">Google Drive</string>
     <string name="export_email_current_shoppinglist">the current shoppinglist</string>
     <string name="widget_title">Shoppinglist</string>
@@ -71,8 +67,8 @@
     <string name="export_google_button_export">export</string>
     <string name="import_google_button">import</string>
     <string name="import_google_drive_title">Google Drive import</string>
-    <string name="popup_google_import_file_title">select shoppinglist ...</string>
-    <string name="button_abort">cancel</string>
+    <string name="popup_google_import_file_title">select shoppinglist …</string>
+    <string name="button_abort">Cancel</string>
     <string name="sqlstatement_not_specified">not specified</string>
     <string name="sqlstatement_liter">liter</string>
     <string name="sqlstatement_kilogram">kilogram</string>

@@ -20,8 +20,8 @@
     <string name="msg_google_export_empty_shoppinglist">the shoppinglist is empty. There\'s nothing to export.</string>
     <string name="msg_google_import_not_compatible">The selected file is incompatible.</string>
     <string name="msg_google_import_successful">The shoppinglist where successfully imported.</string>
-    <string name="msg_google_export_exporting">Shoppinglist is beeing exported...</string>
-    <string name="msg_google_import_importing">Shoppinglist is beeing imported...</string>
-    <string name="msg_google_import_export_oauth">Conntecting to Google Drive...</string>
+    <string name="msg_google_export_exporting">Shoppinglist is being exported …</string>
+    <string name="msg_google_import_importing">Shoppinglist is being imported …</string>
+    <string name="msg_google_import_export_oauth">Conntecting to Google Drive …</string>
 
 </resources>

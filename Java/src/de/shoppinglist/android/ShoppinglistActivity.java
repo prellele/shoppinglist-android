@@ -399,7 +399,7 @@ public class ShoppinglistActivity extends AbstractShoppinglistActivity {
 
 			for (int i = 0; i < stores.size(); i++) {
 
-				text = text + getString(R.string.export_email_at_which_store)
+				text = text + getString(R.string.export_at_store)
 						+ " " + stores.get(i).getName() + ":\n";
 				List<ShoppinglistProductMapping> shoppinglistProductMappingsToSend = ShoppinglistActivity.this.datasource
 						.getProductsOnShoppingList(stores.get(i).getId());

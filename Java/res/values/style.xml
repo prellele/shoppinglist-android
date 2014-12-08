@@ -131,7 +131,7 @@
     <dimen name="input_size_height">50dp</dimen>
     <dimen name="text_size_label">15dp</dimen>
     <dimen name="text_size_input">15dp</dimen>
-    <dimen name="text_size_title">20dp</dimen>
+    <dimen name="text_size_title">20sp</dimen>
     <dimen name="title_size_height">50dp</dimen>
     <dimen name="label_size_height">50dp</dimen>
     <dimen name="icon_size_square_checked">35dp</dimen>

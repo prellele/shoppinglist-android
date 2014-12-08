@@ -1,6 +1,5 @@
 package de.shoppinglist.android;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -11,17 +10,10 @@ import android.widget.RadioButton;
 import de.shoppinglist.android.constant.ConfigurationConstants;
 import de.shoppinglist.android.constant.GlobalValues;
 import de.shoppinglist.android.datasource.ShoppinglistDataSource;
-import de.shoppinglist.android.googledrive.GoogleOAuthActivity;
 
 public class UserConfigurationActivity extends AbstractShoppinglistActivity {
 
-	private Button buttonExportEmail;
-
-	private Button buttonExportGoogle;
-	
 	private Button buttonSaveConfiguration;
-
-	private Context context;
 
 	private ShoppinglistDataSource datasource;
 
@@ -34,7 +26,6 @@ public class UserConfigurationActivity extends AbstractShoppinglistActivity {
 	public void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.datasource = super.getDatasource();
-		this.context = super.getContext();
 
 		this.setContentView(R.layout.user_configuration);
 
@@ -69,28 +60,6 @@ public class UserConfigurationActivity extends AbstractShoppinglistActivity {
 			}
 
 		});
-
-		this.buttonExportEmail = (Button) this.findViewById(R.id.buttonExportEmail);
-		this.buttonExportEmail.setOnClickListener(new OnClickListener() {
-
-			public void onClick(final View v) {
-				final Intent intentExportEmail = new Intent(UserConfigurationActivity.this.context,
-						SendEmailActivity.class);
-				UserConfigurationActivity.this.startActivityForResult(intentExportEmail, 0);
-			}
-
-		});
-
-		this.buttonExportGoogle = (Button) this.findViewById(R.id.buttonExportGoogle);
-		this.buttonExportGoogle.setOnClickListener(new OnClickListener() {
-
-			public void onClick(final View v) {
-				final Intent intentOAuthGoogle = new Intent(UserConfigurationActivity.this.context,
-						GoogleOAuthActivity.class);
-				UserConfigurationActivity.this.startActivityForResult(intentOAuthGoogle, 0);
-
-			}
-		});	
 	}
 
 	@Override

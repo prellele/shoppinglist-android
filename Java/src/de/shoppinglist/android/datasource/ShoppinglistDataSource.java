@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -905,7 +906,7 @@ public class ShoppinglistDataSource {
 		final String sqlQuery = "SELECT " + DBConstants.COL_PRODUCT_ID + ", "
 				+ DBConstants.COL_PRODUCT_NAME + ", " + DBConstants.COL_PRODUCT_UNIT_ID + " FROM "
 				+ DBConstants.TAB_PRODUCT_NAME + " WHERE UPPER(" + DBConstants.TAB_PRODUCT_NAME
-				+ "." + DBConstants.COL_PRODUCT_NAME + ") = '" + productName.toUpperCase().trim()
+				+ "." + DBConstants.COL_PRODUCT_NAME + ") = '" + productName.toUpperCase(Locale.getDefault()).trim()
 				+ "' AND " + DBConstants.COL_PRODUCT_UNIT_ID + " = " + unitId;
 
 		final Cursor cursor = this.database.rawQuery(sqlQuery, null);

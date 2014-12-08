@@ -62,19 +62,14 @@
         android:text="@string/user_configuration_export_import" >
     </TextView>
 
-    <TableRow android:gravity="center" >
+    <TableRow android:gravity="left" >
 
-        <Button
-            android:id="@+id/buttonExportGoogle"
-            style="@style/View.Button"
-            android:text="@string/google_docs" >
-        </Button>
+        <TextView
+        style="@style/View.Text"
+        android:text="@string/not_yet" >
+            
+    </TextView>
 
-        <Button
-            android:id="@+id/buttonExportEmail"
-            style="@style/View.Button"
-            android:text="@string/user_configuration_email" >
-        </Button>
     </TableRow>
 
 </TableLayout>
