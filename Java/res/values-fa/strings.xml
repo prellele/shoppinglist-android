@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_add_new_product_quantity">تعداد:</string>
+    <string name="label_add_new_product_unit">واحدها:</string>
+    <string name="label_add_new_product_name">برچسب:</string>
+    <string name="label_add_new_product_store">بازار:</string>
+    <string name="label_add_new_store_name">نام:</string>
+    <string name="label_add_new_unit_name">نام:</string>
+    <string name="label_add_new_favoritelist_name">نام:</string>
+    <string name="title_manage_units">مدیریت واحد ها</string>
+</resources>
