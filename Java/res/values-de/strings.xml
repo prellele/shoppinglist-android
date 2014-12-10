@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="title_overview_store">Einkaufsliste nach Markt</string>
     <string name="app_name">Einkaufsliste</string>
     <string name="not_yet">noch nicht verfügbar</string>
     <string name="overview_alphabetically">Alphabetische Übersicht</string>
     <string name="store_products_view">Einkaufsliste für</string>
-    <string name="actionbar_add_new_product">+ Produkt </string>
+    <string name="actionbar_add_new_product">+ Produkt</string>
     <string name="popup_button_clear_store_list">Liste des Marktes löschen</string>
     <string name="label_add_new_product_quantity">Anzahl:</string>
     <string name="label_add_new_product_unit">Einheit:</string>
@@ -23,7 +22,7 @@
     <string name="actionbar_options">Einstellungen</string>
     <string name="actionbar_delete_shoppinglist">Einkaufsliste löschen</string>
     <string name="actionbar_manage_stores">Märkte verwalten</string>
-    <string name="actionbar_share_list">Liste senden</string>
+    <string name="actionbar_share_list">Liste teilen</string>
     <string name="actionbar_manage_units">Einheiten verwalten</string>
     <string name="label_view_type">Ansicht:</string>
     <string name="radio_button_view_type_store">Nach Markt</string>
@@ -36,7 +35,7 @@
     <string name="title_manage_units">Einheiten verwalten</string>
     <string name="actionbar_manage_favorites">Favoriten verwalten</string>
     <string name="title_manage_favorites">Favoriten verwalten</string>
-    <string name="actionbar_add_new_store">+ Markt </string>
+    <string name="actionbar_add_new_store">+ Markt</string>
     <string name="actionbar_add_new_unit">+ Einheit</string>
     <string name="title_add_store">Markt hinzufügen</string>
     <string name="title_edit_store">Markt editieren</string>
@@ -54,8 +53,8 @@
     <string name="popup_button_change_favorite_name">Name editieren</string>
     <string name="popup_button_add_favoritelist_to_shoppinglist">Liste zur Einkaufsliste hinzufügen</string>
     <string name="user_configuration_export_import">Exportieren / Importieren</string>
-    <string name="user_configuration_email">Email</string>
-    <string name="export_at_store">Bei</string>
+    <string name="user_configuration_email">E-Mail</string>
+    <string name="export_at_store">bei</string>
     <string name="google_docs">Google Drive</string>
     <string name="export_email_current_shoppinglist">Die aktuelle Einkaufsliste</string>
     <string name="widget_title">Einkaufsliste</string>
@@ -72,7 +71,6 @@
     <string name="sqlstatement_not_specified">keine Angabe</string>
     <string name="sqlstatement_liter">Liter</string>
     <string name="sqlstatement_kilogram">Kilogramm</string>
-    <string name="sqlstatement_packets">Paket(e)</string>
+    <string name="sqlstatement_packets">Pakete</string>
     <string name="sqlstatement_gram">Gramm</string>
-
 </resources>

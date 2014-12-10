@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="msg_favorite_already_exists">Es existiert bereits eine Favoritenliste mit diesem Namen</string>
     <string name="msg_store_already_exists">Es existiert bereits ein Markt mit diesem Namen</string>
     <string name="msg_unit_already_exists">Es existiert bereits eine Einheit mit diesem Namen</string>
@@ -23,5 +22,4 @@
     <string name="msg_google_export_exporting">Einkaufsliste wird exportiert …</string>
     <string name="msg_google_import_importing">Einkaufsliste wird importiert …</string>
     <string name="msg_google_import_export_oauth">Verbindung zu Google Drive wird hergestellt …</string>
-
 </resources>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="title_overview_store">Shoppinglist ordered by market</string>
     <string name="app_name">Shoppinglist</string>
     <string name="not_yet">not yet</string>
@@ -36,7 +35,7 @@
     <string name="title_manage_units">manage units</string>
     <string name="actionbar_manage_favorites">manage favorites</string>
     <string name="title_manage_favorites">manage favorites</string>
-    <string name="actionbar_add_new_store">+ market </string>
+    <string name="actionbar_add_new_store">+ market</string>
     <string name="actionbar_add_new_unit">+ unit</string>
     <string name="title_add_store">add market</string>
     <string name="title_edit_store">edit market</string>
@@ -74,5 +73,4 @@
     <string name="sqlstatement_kilogram">kilogram</string>
     <string name="sqlstatement_packets">packets</string>
     <string name="sqlstatement_gram">gram</string>
-
 </resources>
