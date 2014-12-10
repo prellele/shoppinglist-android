@@ -5,9 +5,11 @@ import java.util.List;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -289,7 +291,9 @@ public class StoreProductsActivity extends AbstractShoppinglistActivity {
 	}
 
 	private void refreshLayout() {
-		if (this.datasource.getUserConfigurationViewType() == ConfigurationConstants.ALPHABETICALLY_VIEW) {
+		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+		int listTypePref = Integer.parseInt(sharedPref.getString(UserConfigurationActivity.KEY_PREF_LIST_TYPE, ""));
+		if (listTypePref == ConfigurationConstants.ALPHABETICALLY_VIEW) {
 			this.finish();
 		} else {
 

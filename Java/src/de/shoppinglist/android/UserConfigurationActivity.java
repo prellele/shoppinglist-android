@@ -1,80 +1,67 @@
 package de.shoppinglist.android;
 
-import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.RadioButton;
-import de.shoppinglist.android.constant.ConfigurationConstants;
-import de.shoppinglist.android.constant.GlobalValues;
-import de.shoppinglist.android.datasource.ShoppinglistDataSource;
+import android.preference.EditTextPreference;
+import android.preference.ListPreference;
+import android.preference.Preference;
+import android.preference.PreferenceActivity;
+import android.preference.PreferenceCategory;
 
-public class UserConfigurationActivity extends AbstractShoppinglistActivity {
+public class UserConfigurationActivity extends PreferenceActivity implements
+		OnSharedPreferenceChangeListener {
 
-	private Button buttonSaveConfiguration;
+	public static final String KEY_PREF_LIST_TYPE = "listType";
 
-	private ShoppinglistDataSource datasource;
-
-	private RadioButton radioButtonViewTypeAlphabetically;
-
-	private RadioButton radioButtonViewTypeStore;
-
-	/** Called when the activity is first created. */
 	@Override
-	public void onCreate(final Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.datasource = super.getDatasource();
-
-		this.setContentView(R.layout.user_configuration);
-
-		this.radioButtonViewTypeStore = (RadioButton) this.findViewById(R.id.radioButtonViewStore);
-		this.radioButtonViewTypeAlphabetically = (RadioButton) this
-				.findViewById(R.id.radioButtonViewAlphabetically);
-		final short viewType = this.datasource.getUserConfigurationViewType();
-
-		if (viewType == ConfigurationConstants.STORE_VIEW) {
-			this.radioButtonViewTypeStore.setChecked(GlobalValues.YES_BOOL);
+		addPreferencesFromResource(R.xml.preferences);
+		// show the current value in the settings screen
+		for (int i = 0; i < getPreferenceScreen().getPreferenceCount(); i++) {
+			initSummary(getPreferenceScreen().getPreference(i));
 		}
-		if (viewType == ConfigurationConstants.ALPHABETICALLY_VIEW) {
-			this.radioButtonViewTypeAlphabetically.setChecked(GlobalValues.YES_BOOL);
-		}
-
-		this.buttonSaveConfiguration = (Button) this.findViewById(R.id.buttonSaveUserConfiguration);
-		this.buttonSaveConfiguration.setOnClickListener(new OnClickListener() {
-
-			public void onClick(final View v) {
-				short viewType = ConfigurationConstants.STORE_VIEW;
-
-				if (UserConfigurationActivity.this.radioButtonViewTypeStore.isChecked()) {
-					viewType = ConfigurationConstants.STORE_VIEW;
-
-				} else if (UserConfigurationActivity.this.radioButtonViewTypeAlphabetically
-						.isChecked()) {
-					viewType = ConfigurationConstants.ALPHABETICALLY_VIEW;
-				}
-
-				UserConfigurationActivity.this.datasource.setUserConfiguration(viewType);
-				UserConfigurationActivity.this.finish();
-			}
-
-		});
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(final MenuItem item) {
-		switch (item.getItemId()) {
-
-		case android.R.id.home:
-			Intent intent = new Intent(this, ShoppinglistActivity.class);
-			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			startActivity(intent);
-			break;
-
-		default:
-			break;
-		}
-		return false;
+	protected void onResume() {
+		super.onResume();
+		getPreferenceScreen().getSharedPreferences()
+				.registerOnSharedPreferenceChangeListener(this);
 	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		getPreferenceScreen().getSharedPreferences()
+				.unregisterOnSharedPreferenceChangeListener(this);
+	}
+
+	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
+			String key) {
+		updatePreferences(findPreference(key));
+	}
+
+	private void initSummary(Preference p) {
+		if (p instanceof PreferenceCategory) {
+			PreferenceCategory cat = (PreferenceCategory) p;
+			for (int i = 0; i < cat.getPreferenceCount(); i++) {
+				initSummary(cat.getPreference(i));
+			}
+		} else {
+			updatePreferences(p);
+		}
+	}
+
+	private void updatePreferences(Preference p) {
+		if (p instanceof EditTextPreference) {
+			EditTextPreference editTextPref = (EditTextPreference) p;
+			p.setSummary(editTextPref.getText());
+		} else if (p instanceof ListPreference) {
+			ListPreference listPref = (ListPreference) p;
+			((ListPreference) p).setValue(listPref.getValue());
+		}
+	}
+
 }

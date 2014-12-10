@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="title_overview_store">Shoppinglist ordered by market</string>
+    <string name="title_overview_store">by market</string>
     <string name="app_name">Shoppinglist</string>
     <string name="not_yet">not yet</string>
     <string name="overview_alphabetically">Alphabetical overview</string>
@@ -27,8 +27,7 @@
     <string name="label_view_type">view:</string>
     <string name="radio_button_view_type_store">order by market</string>
     <string name="radio_button_view_type_alphabetically">alphabetical</string>
-    <string name="title_user_configuration">Settings</string>
-    <string name="title_overview_alphabetically">alphabetical shoppinglist</string>
+    <string name="title_overview_alphabetical">alphabetical</string>
     <string name="title_edit_product">edit product</string>
     <string name="icon_description_checked">already bought</string>
     <string name="title_manage_stores">manage stores</string>
@@ -52,8 +51,6 @@
     <string name="popup_button_change_favoritelist_products">edit content</string>
     <string name="popup_button_change_favorite_name">edit name</string>
     <string name="popup_button_add_favoritelist_to_shoppinglist">add list to shoppinglist</string>
-    <string name="user_configuration_export_import">export / import</string>
-    <string name="user_configuration_email">email</string>
     <string name="export_at_store">at</string>
     <string name="google_docs">Google Drive</string>
     <string name="export_email_current_shoppinglist">the current shoppinglist</string>
@@ -73,4 +70,7 @@
     <string name="sqlstatement_kilogram">kilogram</string>
     <string name="sqlstatement_packets">packets</string>
     <string name="sqlstatement_gram">gram</string>
+    <string name="pref_display">Display</string>
+    <string name="pref_list_type">List type</string>
+    <string name="pref_list_type_sum">Changes default displaying of your lists</string>
 </resources>

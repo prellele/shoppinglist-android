@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string-array name="pref_listTypes_entries">
+        <item>@string/title_overview_store</item>
+        <item>@string/title_overview_alphabetical</item>
+    </string-array>
+
+    <string-array name="pref_listTypes_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+</resources>

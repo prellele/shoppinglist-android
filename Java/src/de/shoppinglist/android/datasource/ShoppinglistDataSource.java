@@ -18,7 +18,6 @@ import de.shoppinglist.android.bean.Shoppinglist;
 import de.shoppinglist.android.bean.ShoppinglistProductMapping;
 import de.shoppinglist.android.bean.Store;
 import de.shoppinglist.android.bean.Unit;
-import de.shoppinglist.android.constant.ConfigurationConstants;
 import de.shoppinglist.android.constant.DBConstants;
 import de.shoppinglist.android.constant.GlobalValues;
 import de.shoppinglist.android.helper.SQLiteHelper;
@@ -1161,29 +1160,6 @@ public class ShoppinglistDataSource {
 		cursor.close();
 
 		return unit;
-	}
-
-	/**
-	 * gets the viewType the user has set up
-	 * 
-	 * @return short viewType
-	 */
-	public short getUserConfigurationViewType() {
-		this.isDbLockedByThread();
-
-		final String sqlQuery = "SELECT " + DBConstants.COL_USER_CONFIGURATION_VIEW_TYPE + " FROM "
-				+ DBConstants.TAB_USER_CONFIGURATION;
-		final Cursor cursor = this.database.rawQuery(sqlQuery, null);
-
-		short viewType = ConfigurationConstants.STORE_VIEW;
-
-		while (cursor.moveToNext()) {
-			viewType = cursor.getShort(cursor
-					.getColumnIndex(DBConstants.COL_USER_CONFIGURATION_VIEW_TYPE));
-		}
-		cursor.close();
-
-		return viewType;
 	}
 
 	/**

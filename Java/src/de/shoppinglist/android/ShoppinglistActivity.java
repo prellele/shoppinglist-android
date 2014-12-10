@@ -7,7 +7,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -511,7 +513,9 @@ public class ShoppinglistActivity extends AbstractShoppinglistActivity {
 	 * sets the viewType
 	 */
 	private void setViewType() {
-		this.viewType = this.datasource.getUserConfigurationViewType();
+		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+		int listTypePref = Integer.parseInt(sharedPref.getString(UserConfigurationActivity.KEY_PREF_LIST_TYPE, ""));
+		this.viewType = listTypePref;
 	}
 
 	/**

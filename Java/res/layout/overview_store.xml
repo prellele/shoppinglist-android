@@ -3,11 +3,6 @@
     style="@style/Layout.Vertical.Table"
     android:scrollbarAlwaysDrawVerticalTrack="true" >
 
-    <TextView
-        style="@style/View.Text.Title"
-        android:text="@string/title_overview_store" >
-    </TextView>
-
     <TableRow>
 
         <ListView
