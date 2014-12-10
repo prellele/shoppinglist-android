@@ -144,17 +144,6 @@
             android:name=".ShowHistoryShoppinglist"
             android:label="@string/app_name" >
         </activity>
-
-        <!-- ACTIVITY FOR GOOGLE DRIVE -->
-        <activity
-            android:name=".googledrive.GoogleOAuthActivity"
-            android:exported="true"
-            android:label="@string/app_name" >
-        </activity>
-        <activity
-            android:name=".googledrive.DriveApiActivity"
-            android:label="@string/app_name" >
-        </activity>
     </application>
 
 </manifest>
