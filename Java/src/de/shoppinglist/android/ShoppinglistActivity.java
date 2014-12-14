@@ -514,7 +514,7 @@ public class ShoppinglistActivity extends AbstractShoppinglistActivity {
 	 */
 	private void setViewType() {
 		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-		int listTypePref = Integer.parseInt(sharedPref.getString(UserConfigurationActivity.KEY_PREF_LIST_TYPE, ""));
+		int listTypePref = Integer.parseInt(sharedPref.getString(UserConfigurationActivity.KEY_PREF_LIST_TYPE, UserConfigurationActivity.KEY_PREF_LIST_TYPE_DEFAULT));
 		this.viewType = listTypePref;
 	}
 

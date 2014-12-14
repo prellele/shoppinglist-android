@@ -292,7 +292,7 @@ public class StoreProductsActivity extends AbstractShoppinglistActivity {
 
 	private void refreshLayout() {
 		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-		int listTypePref = Integer.parseInt(sharedPref.getString(UserConfigurationActivity.KEY_PREF_LIST_TYPE, ""));
+		int listTypePref = Integer.parseInt(sharedPref.getString(UserConfigurationActivity.KEY_PREF_LIST_TYPE, UserConfigurationActivity.KEY_PREF_LIST_TYPE_DEFAULT));
 		if (listTypePref == ConfigurationConstants.ALPHABETICALLY_VIEW) {
 			this.finish();
 		} else {

@@ -13,6 +13,8 @@ public class UserConfigurationActivity extends PreferenceActivity implements
 		OnSharedPreferenceChangeListener {
 
 	public static final String KEY_PREF_LIST_TYPE = "listType";
+	public static final String KEY_PREF_LIST_TYPE_DEFAULT = "0";
+	
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
