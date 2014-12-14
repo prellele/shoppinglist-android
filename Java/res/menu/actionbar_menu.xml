@@ -5,6 +5,7 @@
     <item
         android:id="@+id/actionbarAddProduct"
         android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_new"
         android:title="@string/actionbar_add_new_product">
     </item>
     <item
