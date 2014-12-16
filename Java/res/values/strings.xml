@@ -73,4 +73,6 @@
     <string name="pref_display">Display</string>
     <string name="pref_list_type">List type</string>
     <string name="pref_list_type_sum">Changes default displaying of your lists</string>
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">closed</string>
 </resources>

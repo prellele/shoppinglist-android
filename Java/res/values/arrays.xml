@@ -9,4 +9,15 @@
         <item>0</item>
         <item>1</item>
     </string-array>
+    
+    <string-array name="planets_array">
+        <item>list</item>
+        <item>manag markets</item>
+        <item>manag units</item>
+        <item>manag favorites</item>
+        <item>delet list</item>
+        <item>sho history</item>
+        <item>shar</item>
+        <item>settings</item>
+    </string-array>
 </resources>

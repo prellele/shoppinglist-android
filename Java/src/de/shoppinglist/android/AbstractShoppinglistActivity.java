@@ -80,7 +80,7 @@ public abstract class AbstractShoppinglistActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		if (this.getClass() != ShoppinglistActivity.class) {
 			ActionBar actionBar = getActionBar();
-			actionBar.setDisplayHomeAsUpEnabled(true);
+//			actionBar.setDisplayHomeAsUpEnabled(true);
 		}
 		this.datasource = new ShoppinglistDataSource(this);
 		this.datasource.open();
