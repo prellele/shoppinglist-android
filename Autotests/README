@@ -1,4 +1,4 @@
-Autotests is a project created by the team of QA enthusiasts to cover major functional features of the Android application Shoppinglist.
+*Autotests* is a project created by the team of QA enthusiasts to cover major functional features of the Android application Shoppinglist.
 
 Our aim is to create set of automated functional acceptance tests and run them accross multiple devices and Android versions.
 
