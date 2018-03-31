@@ -1,0 +1,23 @@
+Autotests is a project created by the team of QA enthusiasts to cover major functional features of the Android application Shoppinglist.
+
+Our aim is to create set of automated functional acceptance tests and run them accross multiple devices and Android versions.
+
+As for testing environment we use:
+Test Automation BDD Framework Cucumber
+Programming Languages: Gherkin for tests scenarios, Ruby for steps definitions
+Automation Tools: Appium, UIAutomator, ADB
+IDE: RubyMine
+
+To run tests:
+$ cucumber -t @[area1_to_test], @[area2_to_test]
+
+To run tests without launching Appium:
+$ cucumber -t @[area_to_test] --dry-run
+
+Devices and OS:
+Nexus 6, Android 5.0
+LG Nexus 5X, Android 8.1
+
+
+
+
